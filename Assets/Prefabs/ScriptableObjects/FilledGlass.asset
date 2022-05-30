@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: FilledGlass
   itemTransitions: []
-  itemMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  itemMaterial: {fileID: 2100000, guid: 3d0a1d9fa038d6f4c9663dd662cdb595, type: 2}
+  itemPrefab: {fileID: 734708727751006116, guid: 73ec7c8838f51c3439ddc7c4acc21f44, type: 3}

@@ -10,11 +10,10 @@ public class CollectionMachine : MonoBehaviour, Interactable
     [SerializeField] private ItemSO itemToCollect;
     private bool transitioning;
     private float timer;
-
-    [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private MeshFilter meshFilter;
+    
     [SerializeField] private InteractType itemInteractType;
-
+    [SerializeField] private Transform itemSpawnpoint;
+    private GameObject spawnedItem;
     private void Start()
     {
         canInteract = true;
@@ -74,13 +73,11 @@ public class CollectionMachine : MonoBehaviour, Interactable
     
     private void SetMesh(ItemSO item)
     {
-        meshFilter.mesh = item.itemMesh;
-        meshRenderer.material = item.itemMaterial;
+        spawnedItem = Instantiate(itemToCollect.itemPrefab, itemSpawnpoint);
     }
 
     private void RemoveMesh()
     {
-        meshFilter.mesh = null;
-        meshRenderer.material = null;
+        Destroy(spawnedItem);
     }
 }

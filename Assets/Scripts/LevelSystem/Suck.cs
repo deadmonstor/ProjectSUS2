@@ -16,11 +16,10 @@ public class Suck : MonoBehaviour
         
         var rb = this.GetComponent<Rigidbody>();
 
-        Vector3 target = new Vector3(0, 3, 15);
+        Vector3 target = new Vector3(0, 3, 50005);
         Vector3 dir = target - transform.position;
         dir.Normalize();
         dir *= Random.Range(0.5f, 2.0f);
         rb.AddForce(dir * 30.0f, ForceMode.Impulse);
-        enableForce = false;
     }
 }

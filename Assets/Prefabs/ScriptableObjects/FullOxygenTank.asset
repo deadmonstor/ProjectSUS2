@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: FullTank
   itemTransitions: []
-  itemMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  itemMaterial: {fileID: 2100000, guid: 3d0a1d9fa038d6f4c9663dd662cdb595, type: 2}
+  itemPrefab: {fileID: 6689741768182377481, guid: 819d5c98ff8c52f47b2ed6a0072ff1df, type: 3}

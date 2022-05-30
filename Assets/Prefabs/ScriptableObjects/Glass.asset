@@ -17,5 +17,5 @@ MonoBehaviour:
   - machineToUse: 1
     itemToGet: {fileID: 11400000, guid: e70e22b3c4e2ba5499b8b41af868f59e, type: 2}
     transitionTime: 3
-  itemMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  itemMaterial: {fileID: 2100000, guid: e54655c7eeed6994d9a1863bd09b7024, type: 2}
+    interactType: 0
+  itemPrefab: {fileID: 4724263820935756016, guid: 908ad301da6c9da479a4f98ebcfeaa09, type: 3}

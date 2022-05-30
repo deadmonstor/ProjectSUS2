@@ -10,12 +10,11 @@ public class OxygenMachine : MonoBehaviour, Interactable
     [SerializeField] private Image completionImage;
     [SerializeField] private float transitionTime;
     [SerializeField] private ItemSO requiredItem;
-    [SerializeField] private MeshFilter meshFilter;
-    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Transform itemSpawnpoint;
     private bool transitioning;
     private float timer;
     [SerializeField] private InteractType itemInteractType;
-
+    private GameObject spawnedItem;
     [SerializeField] private float removeTime;
     private void Start()
     {
@@ -53,8 +52,7 @@ public class OxygenMachine : MonoBehaviour, Interactable
         canInteract = false;
         timer = 0;
         completionImage.transform.parent.gameObject.SetActive(true);
-        meshRenderer.material = requiredItem.itemMaterial;
-        meshFilter.mesh = requiredItem.itemMesh;
+        spawnedItem = Instantiate(player.GetItem().itemPrefab, itemSpawnpoint);
         player.SetItem(null);
 
         
@@ -93,8 +91,7 @@ public class OxygenMachine : MonoBehaviour, Interactable
     private IEnumerator RemoveCoroutine()
     {
         yield return new WaitForSeconds(removeTime);
-        meshFilter.mesh = null;
-        meshRenderer.material = null;
+        Destroy(spawnedItem);
         Events.OnAddEmptyTank();
     }
 

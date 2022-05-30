@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour, Interactable
 {
-    [SerializeField] private MeshFilter itemMeshFilter;
-    [SerializeField] private MeshRenderer itemMeshRenderer;
     private bool hasItem;
     private ItemSO currentItem;
+    private GameObject spawnedItem;
+    [SerializeField] private Transform itemSpawnpoint;
 
     public bool canInteract { get; set; }
     public bool InteractPressed(PlayerController player)
@@ -44,13 +44,11 @@ public class Counter : MonoBehaviour, Interactable
     
     private void SetMesh(ItemSO item)
     {
-        itemMeshFilter.mesh = item.itemMesh;
-        itemMeshRenderer.material = item.itemMaterial;
+        spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
     }
 
     private void RemoveMesh()
     {
-        itemMeshFilter.mesh = null;
-        itemMeshRenderer.material = null;
+        Destroy(spawnedItem);
     }
 }

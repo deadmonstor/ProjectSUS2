@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class ItemTransitionMachine : MonoBehaviour, Interactable
 {
     [SerializeField] private MachineType machineType;
-    [SerializeField] private MeshFilter itemMeshFilter;
-    [SerializeField] private MeshRenderer itemMeshRenderer;
     [SerializeField] private Image completionImage;
     private bool hasItem;
     private bool transitioning;
@@ -17,6 +15,8 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     private float transitionTime;
     private float timer;
     private InteractType itemInteractType;
+    [SerializeField] private Transform itemSpawnpoint;
+    private GameObject spawnedItem;
 
     private void Start()
     {
@@ -122,13 +122,14 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
 
     private void SetMesh(ItemSO item)
     {
-        itemMeshFilter.mesh = item.itemMesh;
-        itemMeshRenderer.material = item.itemMaterial;
+        RemoveMesh();
+        spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
     }
 
     private void RemoveMesh()
     {
-        itemMeshFilter.mesh = null;
-        itemMeshRenderer.material = null;
+        if (spawnedItem == null) return;
+
+        Destroy(spawnedItem);
     }
 }

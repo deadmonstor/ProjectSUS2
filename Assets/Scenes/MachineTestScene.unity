@@ -469,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 7218779204864276250, guid: fe9e498d7f2be9149b12700345726322, type: 3}
       propertyPath: meshFilter
       value: 
-      objectReference: {fileID: 640796943}
+      objectReference: {fileID: 0}
     - target: {fileID: 7218779204864276250, guid: fe9e498d7f2be9149b12700345726322, type: 3}
       propertyPath: removeTime
       value: 5
@@ -477,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 7218779204864276250, guid: fe9e498d7f2be9149b12700345726322, type: 3}
       propertyPath: meshRenderer
       value: 
-      objectReference: {fileID: 640796942}
+      objectReference: {fileID: 0}
     - target: {fileID: 7218779204864276250, guid: fe9e498d7f2be9149b12700345726322, type: 3}
       propertyPath: itemInteractType
       value: 1
@@ -532,16 +532,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe9e498d7f2be9149b12700345726322, type: 3}
---- !u!23 &640796942 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9185420657303888391, guid: fe9e498d7f2be9149b12700345726322, type: 3}
-  m_PrefabInstance: {fileID: 640796941}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &640796943 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 642595194629188255, guid: fe9e498d7f2be9149b12700345726322, type: 3}
-  m_PrefabInstance: {fileID: 640796941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995494690
 GameObject:
   m_ObjectHideFlags: 0

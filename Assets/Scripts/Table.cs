@@ -36,19 +36,18 @@ public class Table : MonoBehaviour, Interactable
     [SerializeField] private GameObject chairPrefab;
     [SerializeField] private Mesh chairMesh;
     [SerializeField] private GameObject plate;
+    [SerializeField] private Transform itemSpawnpoint;
+    private GameObject spawnedItem;
 
     private void Start()
     {
-        // Spawn chair
-        Vector3 direction = GetOffset() - transform.position;
-        direction.Normalize();
-        GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), Quaternion.Euler(direction));
+        GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), chairPrefab.transform.rotation);
     }
 
     public void PutOnTable(ItemSO item)
     {
-        plate.GetComponent<MeshFilter>().mesh = item.itemMesh;
-        plate.GetComponent<Renderer>().material = item.itemMaterial;
+        spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+        
         _canInteract = false;
         Events.OnItemPutOnCustomerTable(item);
     }
@@ -71,6 +70,7 @@ public class Table : MonoBehaviour, Interactable
         if (_canInteract && item != null)
         {
             PutOnTable(item);
+            player.SetItem(null);
         }
 
         return true;
