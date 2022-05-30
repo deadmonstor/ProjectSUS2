@@ -2,10 +2,12 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Suck : MonoBehaviour
 {
+    [HideInInspector]
     public bool enableForce = false;
 
     private void FixedUpdate()
@@ -14,6 +16,11 @@ public class Suck : MonoBehaviour
         
         var rb = this.GetComponent<Rigidbody>();
 
-        rb.velocity = Vector3.forward * 25 + Vector3.up * 5;
+        Vector3 target = new Vector3(0, 3, 15);
+        Vector3 dir = target - transform.position;
+        dir.Normalize();
+        dir *= Random.Range(0.5f, 2.0f);
+        rb.AddForce(dir * 30.0f, ForceMode.Impulse);
+        enableForce = false;
     }
 }
