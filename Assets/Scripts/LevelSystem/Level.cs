@@ -50,8 +50,9 @@ namespace LevelSystem
 
             GameTime = 0;
 
-            yield return new WaitForSecondsRealtime(GameTimeBeforeLose);
+            Events.OnLevelLoaded(levelIDs[currentLevelID]);
             
+            yield return new WaitForSecondsRealtime(GameTimeBeforeLose);
             StartCoroutine(Lose());
         }
 

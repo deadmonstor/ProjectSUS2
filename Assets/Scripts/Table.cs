@@ -39,9 +39,11 @@ public class Table : MonoBehaviour, Interactable
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
 
+    public GameObject chair;
+
     private void Start()
     {
-        GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), chairPrefab.transform.rotation);
+        chair = GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), chairPrefab.transform.rotation);
     }
 
     public void PutOnTable(ItemSO item)
@@ -49,7 +51,7 @@ public class Table : MonoBehaviour, Interactable
         spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
         
         _canInteract = false;
-        Events.OnItemPutOnCustomerTable(item);
+        Events.OnItemPutOnCustomerTable(this, item);
     }
 
     private void OnDrawGizmos()

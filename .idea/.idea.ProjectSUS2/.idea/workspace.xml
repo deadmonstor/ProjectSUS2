@@ -20,8 +20,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/EmptyTankCollector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Customers/Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OxygenUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Table.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40614DA1-0714-468E-86F0-CDEC1DBE96F5/1b/3efccde7/NavMeshAgent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Statics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Events.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OxygenManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -32,11 +34,12 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Events.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Level.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Suck.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Events.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Level.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Table.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/Customer.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -48,6 +51,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -69,10 +74,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12380">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="12380" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
