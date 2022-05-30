@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace LevelSystem
 {
@@ -10,10 +13,10 @@ namespace LevelSystem
         public int current = 0;
         public bool IsTimerOn => current != 0;
 
-        public List<int> LevelIDs;
-        public int CurrentLevelID = 0;
+        public List<int> levelIDs;
+        public int currentLevelID = 0;
 
-        private Scene currentLoadedScene;
+        private Scene _currentLoadedScene;
 
         public bool IsGameRunning { get; private set; } = false;
 
@@ -24,24 +27,50 @@ namespace LevelSystem
         
         public IEnumerator StartGame()
         {
-            var asyncLoad = SceneManager.LoadSceneAsync(LevelIDs[CurrentLevelID], LoadSceneMode.Additive);
+            var asyncLoad = SceneManager.LoadSceneAsync(levelIDs[currentLevelID], LoadSceneMode.Additive);
 
             while (!asyncLoad.isDone)
             {
                 yield return null;
             }
 
-            currentLoadedScene = SceneManager.GetSceneAt(LevelIDs[CurrentLevelID]);
+            _currentLoadedScene = SceneManager.GetSceneAt(levelIDs[currentLevelID]);
             
             SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
             IsGameRunning = true;
+
+            Lose();
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private static IEnumerable<Object> GatherSuckables()
+        {
+            return Resources.FindObjectsOfTypeAll(typeof(Suck)).ToList();
         }
         
-        public void Lose()
+        
+        public IEnumerator Lose()
         {
             // TODO: Break wall
             
             // TODO: Apply velocity
+            
+            var suckables = GatherSuckables();
+
+            bool isDone = false;
+            while (!isDone)
+            {
+                foreach (var objs in suckables)
+                {
+                    objs.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 25);
+                }
+
+                isDone = true; // TODO: Move this
+                yield return null;
+            }
+
+
+            
             
             // TODO: End the game
             IsGameRunning = false;
