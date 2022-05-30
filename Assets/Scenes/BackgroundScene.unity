@@ -1685,7 +1685,7 @@ PrefabInstance:
     - target: {fileID: 1523345015322816070, guid: 97e0cdea38403e54d8c6780134cc6c22, type: 3}
       propertyPath: itemToCollect
       value: 
-      objectReference: {fileID: 11400000, guid: 1be2aa99732302344944fa27d4888f21, type: 2}
+      objectReference: {fileID: 11400000, guid: 84de091c4766cec4c9268f58d533ec4c, type: 2}
     - target: {fileID: 4098121677340873561, guid: 97e0cdea38403e54d8c6780134cc6c22, type: 3}
       propertyPath: m_RootOrder
       value: 1

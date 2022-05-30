@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairDirection: 1
   chairPrefab: {fileID: 7045737738358272934, guid: f3bc35751019f1d469a35d2816995c58, type: 3}
-  chairMesh: {fileID: 5060444177187149915, guid: c60d4a26dd0cb2e4d816c163571c20b0, type: 3}
+  chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   plate: {fileID: 682509415203678657}
 --- !u!65 &3523928638094108180
 BoxCollider:
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairDirection: 1
   chairPrefab: {fileID: 7045737738358272934, guid: f3bc35751019f1d469a35d2816995c58, type: 3}
-  chairMesh: {fileID: 5060444177187149915, guid: c60d4a26dd0cb2e4d816c163571c20b0, type: 3}
+  chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   plate: {fileID: 1093321010}
 --- !u!65 &3523928636574115259
 BoxCollider:
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairDirection: 0
   chairPrefab: {fileID: 7045737738358272934, guid: f3bc35751019f1d469a35d2816995c58, type: 3}
-  chairMesh: {fileID: 5060444177187149915, guid: c60d4a26dd0cb2e4d816c163571c20b0, type: 3}
+  chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   plate: {fileID: 7793134700347059334}
 --- !u!65 &3523928636814394988
 BoxCollider:
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairDirection: 0
   chairPrefab: {fileID: 7045737738358272934, guid: f3bc35751019f1d469a35d2816995c58, type: 3}
-  chairMesh: {fileID: 5060444177187149915, guid: c60d4a26dd0cb2e4d816c163571c20b0, type: 3}
+  chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   plate: {fileID: 4956092922869538135}
 --- !u!1 &4956092922869538135
 GameObject:
