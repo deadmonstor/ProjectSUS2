@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace LevelSystem
 {
@@ -19,7 +22,10 @@ namespace LevelSystem
         public List<GameObject> Walls = new List<GameObject>();
 
         private Scene _currentLoadedScene;
+        public float GameTime { get; private set; } = 0;
 
+        public TextMeshProUGUI TimeText;
+        
         public bool IsGameRunning { get; private set; } = false;
 
         void Start()
@@ -41,7 +47,19 @@ namespace LevelSystem
             SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
             IsGameRunning = true;
 
+            GameTime = 0;
+
+            
+            // TODO: Remove these
+            yield return new WaitForSecondsRealtime(5f);
+            
             StartCoroutine(Lose());
+        }
+
+        private void Update()
+        {
+            GameTime += Time.deltaTime;
+            TimeText.SetText("Time: " + (int)GameTime);
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -55,15 +73,19 @@ namespace LevelSystem
         {
             foreach (var objs in Walls)
             {
+                var rb = objs.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.constraints = RigidbodyConstraints.None;
+                
                 objs.transform.SetParent(null);
                 objs.GetComponent<Suck>().enableForce = true;
             }
-            
+             
             yield return new WaitForSecondsRealtime(0.2f);
             
             var suckables = GatherSuckables();
-            bool isDone = false;
-            while (!isDone)
+            int i = 0;
+            while (i != 10)
             {
                 foreach (var objs in suckables)
                 {
@@ -76,17 +98,14 @@ namespace LevelSystem
                     objs.GetComponent<Suck>().enableForce = true;
                 }
 
-                isDone = true; // TODO: Move this
-                yield return null;
+                i++;
             }
 
-            // TODO: End the game
             IsGameRunning = false;
         }
 
         public void Win()
         {
-            // TODO: Stop the game
             IsGameRunning = false;
             
             // TODO: Save the high-score
