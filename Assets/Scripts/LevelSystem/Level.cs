@@ -16,6 +16,8 @@ namespace LevelSystem
         public List<int> levelIDs;
         public int currentLevelID = 0;
 
+        public List<GameObject> Walls = new List<GameObject>();
+
         private Scene _currentLoadedScene;
 
         public bool IsGameRunning { get; private set; } = false;
@@ -51,27 +53,33 @@ namespace LevelSystem
         
         public IEnumerator Lose()
         {
-            // TODO: Break wall
+            foreach (var objs in Walls)
+            {
+                objs.transform.SetParent(null);
+                objs.GetComponent<Suck>().enableForce = true;
+            }
             
-            // TODO: Apply velocity
+            yield return new WaitForSecondsRealtime(0.2f);
             
             var suckables = GatherSuckables();
-
             bool isDone = false;
             while (!isDone)
             {
                 foreach (var objs in suckables)
                 {
-                    objs.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 25);
+                    var rb = objs.GetComponent<Rigidbody>();
+
+                    rb.velocity = Vector3.right * 25;
+                    rb.isKinematic = false;
+                    rb.constraints = RigidbodyConstraints.None;
+
+                    objs.GetComponent<Suck>().enableForce = true;
                 }
 
                 isDone = true; // TODO: Move this
                 yield return null;
             }
 
-
-            
-            
             // TODO: End the game
             IsGameRunning = false;
         }
