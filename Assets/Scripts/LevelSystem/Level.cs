@@ -62,9 +62,9 @@ namespace LevelSystem
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        private static IEnumerable<Object> GatherSuckables()
+        private static IEnumerable<Suck> GatherSuckables()
         {
-            return Resources.FindObjectsOfTypeAll(typeof(Suck)).ToList();
+            return GameObject.FindObjectsOfType<Suck>().ToList();
         }
         
         
@@ -86,11 +86,11 @@ namespace LevelSystem
             int i = 0;
             while (i != 10)
             {
-                foreach (var objs in suckables)
+                foreach (Suck objs in suckables)
                 {
                     var rb = objs.GetComponent<Rigidbody>();
 
-                    rb.velocity = Vector3.right * 25;
+                    objs.transform.SetParent(null);
                     rb.isKinematic = false;
                     rb.constraints = RigidbodyConstraints.None;
 
