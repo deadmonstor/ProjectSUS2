@@ -641,7 +641,7 @@ MonoBehaviour:
   - {fileID: 547735681}
   - {fileID: 747314841}
   - {fileID: 1281442881}
-  GameTimeBeforeLose: 120
+  GameTimeBeforeLose: 10
   TimeText: {fileID: 1590475969}
 --- !u!4 &540692222
 Transform:

@@ -41,10 +41,7 @@ public class Table : MonoBehaviour, Interactable
 
     private void Start()
     {
-        // Spawn chair
-        Vector3 direction = GetOffset() - transform.position;
-        direction.Normalize();
-        GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), Quaternion.Euler(direction));
+        GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), chairPrefab.transform.rotation);
     }
 
     public void PutOnTable(ItemSO item)
