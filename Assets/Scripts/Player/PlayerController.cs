@@ -11,13 +11,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
     [SerializeField] private InteractBox interactBox;
-    [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private MeshFilter meshFilter;
     private Rigidbody _rigidbody;
     private Vector2 _moveVector;
     private ItemSO item;
     private bool allowMovement = true;
-
+    [SerializeField] private Transform itemSpawnpoint;
+    private GameObject spawnedItem;
     public ItemSO GetItem() { return item;}
     private void Awake()
     {
@@ -65,13 +64,11 @@ public class PlayerController : MonoBehaviour
         if (_item == null)
         {
             item = null;
-            meshRenderer.material = null;
-            meshFilter.mesh = null;
+            Destroy(spawnedItem);
             return;
         }
         
         item = _item;
-        meshRenderer.material = item.itemMaterial;
-        meshFilter.mesh = item.itemMesh;
+        spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
     }
 }

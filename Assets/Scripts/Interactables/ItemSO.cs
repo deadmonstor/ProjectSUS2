@@ -6,6 +6,6 @@ public class ItemSO : ScriptableObject
 {
     public string itemName;
     public List<ItemTransition> itemTransitions;
-    public Mesh itemMesh;
-    public Material itemMaterial;
+
+    public GameObject itemPrefab;
 }

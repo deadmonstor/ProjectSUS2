@@ -11,16 +11,16 @@ public class EmptyTankCollector : MonoBehaviour, Interactable
     private bool transitioning;
     private float timer;
 
-    [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private MeshFilter meshFilter;
     [SerializeField] private InteractType itemInteractType;
     [SerializeField] private int itemCount;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private Transform itemSpawnpoint;
+    private GameObject spawnedItem;
     private void Start()
     {
         canInteract = true;
         text.text = itemCount.ToString();
-        SetMesh(itemToCollect);
+        spawnedItem = Instantiate(itemToCollect.itemPrefab, itemSpawnpoint);
     }
 
     private void OnEnable()
@@ -65,23 +65,15 @@ public class EmptyTankCollector : MonoBehaviour, Interactable
         transitioning = false;
         canInteract = true;
     }
-    
-    private void SetMesh(ItemSO item)
-    {
-        meshFilter.mesh = item.itemMesh;
-        meshRenderer.material = item.itemMaterial;
-    }
-
     private void RemoveMesh()
     {
-        meshFilter.mesh = null;
-        meshRenderer.material = null;
+       Destroy(spawnedItem);
     }
 
     private void AddEmptyTank()
     {
         itemCount++;
         text.text = itemCount.ToString();
-        SetMesh(itemToCollect);
+        spawnedItem = Instantiate(itemToCollect.itemPrefab, itemSpawnpoint);
     }
 }
