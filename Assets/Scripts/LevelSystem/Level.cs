@@ -23,6 +23,7 @@ namespace LevelSystem
 
         private Scene _currentLoadedScene;
         public float GameTime { get; private set; } = 0;
+        public float GameTimeBeforeLose = 120f;
 
         public TextMeshProUGUI TimeText;
         
@@ -49,9 +50,7 @@ namespace LevelSystem
 
             GameTime = 0;
 
-            
-            // TODO: Remove these
-            yield return new WaitForSecondsRealtime(5f);
+            yield return new WaitForSecondsRealtime(GameTimeBeforeLose);
             
             StartCoroutine(Lose());
         }
