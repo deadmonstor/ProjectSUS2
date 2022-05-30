@@ -1,12 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CollectionMachine : MonoBehaviour, Interactable
+public class EmptyTankCollector : MonoBehaviour, Interactable
 {
-   [SerializeField] private Image completionImage;
-    [SerializeField] private float transitionTime;
     [SerializeField] private ItemSO itemToCollect;
     private bool transitioning;
     private float timer;
@@ -14,44 +14,39 @@ public class CollectionMachine : MonoBehaviour, Interactable
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private MeshFilter meshFilter;
     [SerializeField] private InteractType itemInteractType;
-
+    [SerializeField] private int itemCount;
+    [SerializeField] private TextMeshProUGUI text;
     private void Start()
     {
         canInteract = true;
-        completionImage.transform.parent.gameObject.SetActive(false);
+        text.text = itemCount.ToString();
         SetMesh(itemToCollect);
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (transitioning)
-            TransitionItem();
+        Events.onAddEmptyTank += AddEmptyTank;
     }
 
-    public void TransitionItem()
+    private void OnDisable()
     {
-        timer += Time.deltaTime;
-        completionImage.fillAmount = timer / transitionTime;
-
-        if (timer >= transitionTime)
-        {
-            transitioning = false;
-            canInteract = true;
-            completionImage.transform.parent.gameObject.SetActive(false);
-            SetMesh(itemToCollect);
-        }
+        Events.onAddEmptyTank -= AddEmptyTank;
     }
 
     public bool canInteract { get; set; }
     public bool InteractPressed(PlayerController player)
     {
-        if (!canInteract) return false;
+        if (itemCount <= 0) return false;
+        if (player.GetItem() == itemToCollect) return false;
+
         transitioning = true;
         canInteract = false;
         timer = 0;
-        completionImage.transform.parent.gameObject.SetActive(true);
-        RemoveMesh();
         
+        if (itemCount <= 0)
+            RemoveMesh();
+        itemCount--;
+        text.text = itemCount.ToString();
         player.SetItem(itemToCollect);
         
         if (itemInteractType == InteractType.Hold)
@@ -69,7 +64,6 @@ public class CollectionMachine : MonoBehaviour, Interactable
     {
         transitioning = false;
         canInteract = true;
-        completionImage.transform.parent.gameObject.SetActive(false);
     }
     
     private void SetMesh(ItemSO item)
@@ -82,5 +76,12 @@ public class CollectionMachine : MonoBehaviour, Interactable
     {
         meshFilter.mesh = null;
         meshRenderer.material = null;
+    }
+
+    private void AddEmptyTank()
+    {
+        itemCount++;
+        text.text = itemCount.ToString();
+        SetMesh(itemToCollect);
     }
 }

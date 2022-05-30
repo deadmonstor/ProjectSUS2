@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7451595431493307938}
   - component: {fileID: 7451595431493307939}
   - component: {fileID: 4639755833371113672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemTransitionMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451595431924572562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CompletionBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 7451595432101043765}
   - component: {fileID: 7451595432101043767}
   - component: {fileID: 7451595432101043764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 7451595433245326390}
   - component: {fileID: 7451595433245326392}
   - component: {fileID: 7451595433245326393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 7451595433256575643}
   - component: {fileID: 7451595433256575638}
   - component: {fileID: 7451595433256575641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MachineItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 7451595433357522740}
   - component: {fileID: 7451595433357522741}
   - component: {fileID: 7451595433357522738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

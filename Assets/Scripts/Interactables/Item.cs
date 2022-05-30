@@ -8,12 +8,12 @@ public class Item : MonoBehaviour, Interactable
     [SerializeField] private ItemSO itemSO;
     public ItemSO GetItem => itemSO;
     public bool canInteract { get; set; }
-    public bool InteractPressed(ItemSO item)
+    public bool InteractPressed(PlayerController player)
     {
         return false;
     }
 
-    public bool InteractReleased(ItemSO item)
+    public bool InteractReleased(PlayerController player)
     {
         throw new NotImplementedException();
     }
