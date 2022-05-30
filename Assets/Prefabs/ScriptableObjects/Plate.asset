@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Plate
   itemTransitions: []
-  itemMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  itemMesh: {fileID: -951608786083511892, guid: d3dff614d747a584ea75a0be82e1f4b0, type: 3}
   itemMaterial: {fileID: 2100000, guid: 3d0a1d9fa038d6f4c9663dd662cdb595, type: 2}
