@@ -50,6 +50,7 @@ public class Table : MonoBehaviour, Interactable
     public void PutOnTable(ItemSO item)
     {
         spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+        
         _canInteract = false;
         Events.OnItemPutOnCustomerTable(item);
     }
@@ -72,6 +73,7 @@ public class Table : MonoBehaviour, Interactable
         if (_canInteract && item != null)
         {
             PutOnTable(item);
+            player.SetItem(null);
         }
 
         return true;
