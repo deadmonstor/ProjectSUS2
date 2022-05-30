@@ -39,7 +39,7 @@ namespace LevelSystem
             SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
             IsGameRunning = true;
 
-            Lose();
+            StartCoroutine(Lose());
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
