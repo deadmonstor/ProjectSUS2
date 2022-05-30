@@ -49,17 +49,37 @@ public class Customer : MonoBehaviour
             _agent.isStopped = true;
             _agent.Warp(table.chair.transform.position);
             table.chair.GetComponent<NavMeshObstacle>().enabled = true;
+            transform.GetComponent<NavMeshObstacle>().enabled = false;
             _agent.enabled = false;
             RotateToTarget(table.transform);
+
+            Events.OnCustomerSatDown(this);
         }
     }
 
     private void OnDrawGizmos()
     {
-        if (table != null)
+        if (table == null) 
+            return;
+        
+        if (!_agent.enabled || !_agent.hasPath) 
+            return;
+        
+        Gizmos.DrawLine(transform.position, _agent.path.corners[0]);
+        
+        for (int i = 1; i < _agent.path.corners.Length; i++)
         {
-            Gizmos.DrawLine(transform.position, table.chair.transform.position);
-            Gizmos.DrawCube(table.transform.position, Vector3.one * 0.5f);
+            var p = _agent.path.corners[i - 1];
+            var p2 = _agent.path.corners[i];
+            Gizmos.DrawLine(p, p2);
         }
+    }
+
+    public void RecalculatePath()
+    {
+        if (!_agent.enabled)
+            return;
+        
+        _agent.SetDestination(table.chair.transform.position);
     }
 }

@@ -18,7 +18,7 @@ public class CustomerManager : MonoBehaviour
 
     public bool HasAvailableTables => availableTables.Count > 0;
     
-    private List<Customer> activeCustomers;
+    private List<Customer> activeCustomers = new List<Customer>();
 
 
     private void OnEnable()
@@ -26,6 +26,8 @@ public class CustomerManager : MonoBehaviour
         SceneManager.sceneLoaded += SceneLoaded;
         Events.onItemPutOnCustomerTable += ItemPutOnTable;
         Events.onLevelLoaded += LevelLoaded;
+        Events.onCustomerSatDown += CustomerSatDown;
+        
     }
 
     private void OnDisable()
@@ -33,16 +35,22 @@ public class CustomerManager : MonoBehaviour
         SceneManager.sceneLoaded -= SceneLoaded;
         Events.onItemPutOnCustomerTable -= ItemPutOnTable;
         Events.onLevelLoaded -= LevelLoaded;
+        Events.onCustomerSatDown -= CustomerSatDown;
+    }
+
+    private void CustomerSatDown(Customer obj)
+    {
+        foreach (Customer c in activeCustomers)
+        {
+            c.RecalculatePath();
+        }
     }
 
     private void LevelLoaded(int index)
     {
         // TODO : ADD CONTEXT OF LEVEL
         SpawnCustomer();
-        SpawnCustomer();
-        SpawnCustomer();
-        SpawnCustomer();
-        SpawnCustomer();
+
     }
 
     private void SpawnCustomer()
@@ -53,6 +61,7 @@ public class CustomerManager : MonoBehaviour
         spawnParticle.Play();
         Table table = GetRandomTable();
         Customer customer = Instantiate(customerPrefab, Vector3.zero, spawnPoint.rotation);
+        activeCustomers.Add(customer);
         customer.table = table;
         customer.Warp(spawnPoint);
         StartCoroutine(MoveToTarget(customer));
@@ -83,12 +92,8 @@ public class CustomerManager : MonoBehaviour
         return table;
     }
 
+    
     private void ItemPutOnTable(Table table, ItemSO item)
-    {
-        
-    }
-
-    public void FindFreeTable()
     {
         
     }

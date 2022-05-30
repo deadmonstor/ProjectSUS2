@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7891490624740068452}
   - component: {fileID: 394203008231312955}
   - component: {fileID: -3622049241302870782}
+  - component: {fileID: 2450660509106642845}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -45,7 +46,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 0.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -99,6 +100,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableForce: 0
+--- !u!208 &2450660509106642845
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102045456245154555}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3308208280301146276
 PrefabInstance:
   m_ObjectHideFlags: 0
