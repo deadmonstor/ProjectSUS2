@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Machine : MonoBehaviour, Interactable
+public class ItemTransitionMachine : MonoBehaviour, Interactable
 {
     [SerializeField] private MachineType machineType;
     [SerializeField] private MeshFilter itemMeshFilter;
