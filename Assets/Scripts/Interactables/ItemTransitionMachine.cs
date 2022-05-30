@@ -13,6 +13,7 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     private bool hasItem;
     private bool transitioning;
     private ItemSO transitionItem;
+    private ItemSO startItem;
     private float transitionTime;
     private float timer;
     private InteractType itemInteractType;
@@ -44,20 +45,30 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     }
 
     public bool canInteract { get; set; }
-    public bool InteractPressed(ItemSO item)
+    public bool InteractPressed(PlayerController player)
     {
         if (!canInteract) return false;
         if (hasItem)
-            return TryCollectItem(item);
+            return TryCollectItem(player);
         
-        return TrySetItem(item);
+        return TrySetItem(player);
     }
 
-    public bool InteractReleased(ItemSO item)
-    {
+    public bool InteractReleased(PlayerController player)
+    {        
+        player.ToggleMovement(true);
+        completionImage.transform.parent.gameObject.SetActive(false);
+
         if (transitioning && itemInteractType == InteractType.Hold)
         {
             StopTransition();
+            player.SetItem(startItem);
+            return true;
+        }
+
+        if (hasItem)
+        {
+            TryCollectItem(player);
             return true;
         }
 
@@ -73,17 +84,22 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
         canInteract = true;
         completionImage.transform.parent.gameObject.SetActive(false);
     }
-    private bool TryCollectItem(ItemSO item)
+    
+    private bool TryCollectItem(PlayerController player)
     {
-        return false;
+        player.SetItem(transitionItem);
+        hasItem = false;
+        RemoveMesh();
+        return true;
     }
-    private bool TrySetItem(ItemSO item)
+    private bool TrySetItem(PlayerController player)
     {
-        foreach (var transition in item.itemTransitions)
+        foreach (var transition in player.GetItem().itemTransitions)
         {
             if (transition.machineToUse == machineType)
             {
-                SetMesh(item);
+                startItem = player.GetItem();
+                SetMesh(startItem);
                 timer = 0;
                 transitionTime = transition.transitionTime;
                 transitionItem = transition.itemToGet;
@@ -93,6 +109,10 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
                 itemInteractType = transition.interactType;
                 completionImage.transform.parent.gameObject.SetActive(true);
                 completionImage.fillAmount = 0;
+                if (itemInteractType == InteractType.Hold)
+                    player.ToggleMovement(false);
+                
+                player.SetItem(null);
                 return true;
             }
         }
