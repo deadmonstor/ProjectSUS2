@@ -41,6 +41,8 @@ namespace LevelSystem
             SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
             IsGameRunning = true;
 
+            yield return new WaitForSecondsRealtime(5f);
+            
             StartCoroutine(Lose());
         }
 
@@ -55,15 +57,19 @@ namespace LevelSystem
         {
             foreach (var objs in Walls)
             {
+                var rb = objs.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.constraints = RigidbodyConstraints.None;
+                
                 objs.transform.SetParent(null);
                 objs.GetComponent<Suck>().enableForce = true;
             }
-            
+             
             yield return new WaitForSecondsRealtime(0.2f);
             
             var suckables = GatherSuckables();
-            bool isDone = false;
-            while (!isDone)
+            int i = 0;
+            while (i != 10)
             {
                 foreach (var objs in suckables)
                 {
@@ -76,8 +82,7 @@ namespace LevelSystem
                     objs.GetComponent<Suck>().enableForce = true;
                 }
 
-                isDone = true; // TODO: Move this
-                yield return null;
+                i++;
             }
 
             // TODO: End the game
