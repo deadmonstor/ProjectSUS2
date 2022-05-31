@@ -89,6 +89,7 @@ public class CustomerManager : MonoBehaviour
         _plateDispenser = FindObjectOfType<PlateDispenser>();
         
         _customersRemaining = index.MaxCustomersSpawned;
+        totalCustomerAmount = index.MaxCustomersSpawned;
         SpawnCustomer();
     }
 

@@ -8,7 +8,7 @@ public class OxygenManager : MonoBehaviour
     private static float oxygen;
     public static float Oxygen => oxygen;
 
-    private static float timeToDrain = 30;
+    private static float timeToDrain = 80;
     private static float timer;
     private bool useOxygen;
     public static void FillOxygen()
