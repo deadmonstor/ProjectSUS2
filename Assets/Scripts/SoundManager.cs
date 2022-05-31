@@ -31,6 +31,8 @@ public class SoundManager : MonoBehaviour
             var source = Instantiate(sourcePrefab);
             sourceQueue.Enqueue(source);
         }
+        
+        PlayMusic("MenuBGM");
     }
 
     private void OnEnable()
