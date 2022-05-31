@@ -52,10 +52,15 @@ public class InteractBox : MonoBehaviour
 
         if (curObj != null)
             closestInteractable = curObj.GetComponent<Interactable>();
-        else closestInteractable = null;
-
+        else
+        {
+            if (closestInteractable != null)
+                closestInteractable.FaceCheck(playerController, enter);
+            closestInteractable = null;
+        }
         if (closestInteractable != null)
             closestInteractable.FaceCheck(playerController, enter);
+        
     }
 
     public void InteractPressed()
