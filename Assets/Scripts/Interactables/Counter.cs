@@ -13,9 +13,9 @@ public class Counter : MonoBehaviour, Interactable
     public bool InteractPressed(PlayerController player)
     {
         if (hasItem)
-            TryCollectItem(player);
+            return TryCollectItem(player);
         else
-            TrySetItem(player);
+            return TrySetItem(player);
 
         return true;
     }
@@ -35,6 +35,8 @@ public class Counter : MonoBehaviour, Interactable
     }
     private bool TrySetItem(PlayerController player)
     {
+        if (player.GetItem() == null) return false;
+
         hasItem = true;
         currentItem = player.GetItem();
         SetMesh(currentItem);

@@ -94,6 +94,8 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     }
     private bool TrySetItem(PlayerController player)
     {
+        if (player.GetItem() == null) return false;
+
         foreach (var transition in player.GetItem().itemTransitions)
         {
             if (transition.machineToUse == machineType)
