@@ -34,10 +34,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Suck.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Level.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Table.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Events.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Customers/Customer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Table.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
