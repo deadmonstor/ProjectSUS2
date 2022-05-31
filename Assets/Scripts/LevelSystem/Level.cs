@@ -47,16 +47,21 @@ namespace LevelSystem
         
         public IEnumerator StartGame()
         {
-            var asyncLoad = SceneManager.LoadSceneAsync(levelIDs[currentLevelID], LoadSceneMode.Additive);
+           
 
-            while (!asyncLoad.isDone)
+            if (SceneManager.GetAllScenes().Count() == 1)
             {
-                yield return null;
-            }
+                var asyncLoad = SceneManager.LoadSceneAsync(levelIDs[currentLevelID], LoadSceneMode.Additive);
 
-            _currentLoadedScene = SceneManager.GetSceneAt(levelIDs[currentLevelID]);
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
+                
+                _currentLoadedScene = SceneManager.GetSceneByBuildIndex(levelIDs[currentLevelID]);
+            }
             
-            SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
             IsGameRunning = true;
 
             GameTime = 0;

@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void OnStart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     
     public void OnExit()
