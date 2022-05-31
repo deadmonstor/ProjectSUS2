@@ -63,8 +63,9 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     public bool canInteract { get; set; }
     public void FaceCheck(PlayerController player, bool enter)
     {
-        if (player.GetItem() != null)
+        if (player.GetItem() != null && player.GetItem().itemTransitions.Count > 0)
             itemInteractType = player.GetItem().itemTransitions[0].interactType;
+        
         if (enter)
         {
             if (!transitioning && hasItem && (player.GetItem() != itemRequiredToCollect || player.GetItem() == null))
