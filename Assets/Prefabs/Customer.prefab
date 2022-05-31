@@ -73,6 +73,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   table: {fileID: 0}
   deSpawnParticle: {fileID: 3468710218633297173}
+  movingSineScale: 0.1
+  sittingSineScale: 0.05
+  speed: 5
+  gfxObject: {fileID: 6545330318347391591}
 --- !u!54 &394203008231312955
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -423,6 +427,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb76c457546e6fb4f9b4e2153474810f, type: 3}
+--- !u!1 &6545330318347391591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cb76c457546e6fb4f9b4e2153474810f, type: 3}
+  m_PrefabInstance: {fileID: 6202801316977045302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5881278430179264733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cb76c457546e6fb4f9b4e2153474810f, type: 3}

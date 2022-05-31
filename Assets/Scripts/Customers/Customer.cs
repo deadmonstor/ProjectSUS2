@@ -13,9 +13,16 @@ public class Customer : MonoBehaviour
     public Order order;
     public ParticleSystem deSpawnParticle;
 
+    public float movingSineScale;
+    public float sittingSineScale;
+    public float speed;
+    private float startY;
+    public GameObject gfxObject;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        startY = gfxObject.transform.position.y;
     }
 
     public void Warp(Transform target)
@@ -49,7 +56,19 @@ public class Customer : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1); 
         //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1f); 
     }
-    
+
+    private void Update()
+    {
+        Bob(_agent.enabled ? movingSineScale : sittingSineScale);
+    }
+
+    private void Bob(float scale)
+    {
+        var pos = gfxObject.transform.position;
+        pos.y = startY + (Mathf.Sin(Time.time * speed) * scale);
+        gfxObject.transform.position = pos;
+    }
+
     private void FixedUpdate()
     {
         if (!_agent.enabled)
