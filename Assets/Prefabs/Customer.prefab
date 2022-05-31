@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &81188211334234463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771200388335422919}
+  m_Layer: 0
+  m_Name: HoldPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771200388335422919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81188211334234463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.016, y: 2.2193289, z: -0.027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7102045456245154554}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4986499549001864740
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +270,7 @@ Transform:
   - {fileID: 5881278430179264733}
   - {fileID: 3399768337311563675}
   - {fileID: 8072662222465263586}
+  - {fileID: 1771200388335422919}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -284,6 +315,13 @@ MonoBehaviour:
   speed: 5
   gfxObject: {fileID: 6545330318347391591}
   indicatorTransform: {fileID: 8072662222465263586}
+  emptyStuffTransform: {fileID: 1771200388335422919}
+  emptyPlatePrefab: {fileID: 378342509392211508, guid: c81dbc3db0863d142a231b7410d80cf7, type: 3}
+  emptyDrinkPrefab: {fileID: 4724263820935756016, guid: 908ad301da6c9da479a4f98ebcfeaa09, type: 3}
+  emptyPlate: {fileID: 0}
+  emptyGlass: {fileID: 0}
+  hasSatDown: 0
+  atPlateDispenser: 0
 --- !u!54 &394203008231312955
 Rigidbody:
   m_ObjectHideFlags: 0

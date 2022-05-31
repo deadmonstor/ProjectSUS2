@@ -22,14 +22,25 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this);
         }
-
+        
         instance = this;
+        DontDestroyOnLoad(gameObject);
         sourceQueue = new Queue<AudioSource>();
         for (int i = 0; i < numberOfSources; i++)
         {
             var source = Instantiate(sourcePrefab);
             sourceQueue.Enqueue(source);
         }
+    }
+
+    private void OnEnable()
+    {
+        Events.onLevelLoaded += LevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        Events.onLevelLoaded -= LevelLoaded;
     }
 
     public static void PlaySFX(string clipToPlay, Vector3 position,out AudioSource source)
@@ -117,6 +128,11 @@ public class SoundManager : MonoBehaviour
     private void SetVolumeInternal(string volToSet, float value)
     {
         audioMixer.SetFloat(volToSet, value);
+    }
+
+    private void LevelLoaded(LevelSO level)
+    {
+        PlayMusic(level.Music);
     }
 
 }

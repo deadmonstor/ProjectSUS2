@@ -26,4 +26,7 @@ public static class Events
 
     public static event Action<int> onCustomerOrderCompleted;
     public static void OnCustomerOrderCompleted(int customersRemaining) { onCustomerOrderCompleted?.Invoke(customersRemaining); }
+
+    public static event Action<Customer> onCustomerArrivedAtPlateDispenser;
+    public static void OnCustomerArrivedAtPlateDispenser(Customer customer) { onCustomerArrivedAtPlateDispenser?.Invoke(customer); }
 }

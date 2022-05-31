@@ -19,7 +19,7 @@ public class InteractBox : MonoBehaviour
         if (interactLayer != (interactLayer | (1 << other.gameObject.layer))) return;
         
         objectsInRange.Add(other.gameObject);
-        GetClosestInteractable();
+        GetClosestInteractable(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -27,10 +27,10 @@ public class InteractBox : MonoBehaviour
         if (interactLayer != (interactLayer | (1 << other.gameObject.layer))) return;
 
         objectsInRange.Remove(other.gameObject);
-        GetClosestInteractable();
+        GetClosestInteractable(false);
     }
 
-    private void GetClosestInteractable()
+    private void GetClosestInteractable(bool enter)
     {
         float curDist = Single.MaxValue;
         GameObject curObj = null;
@@ -53,6 +53,9 @@ public class InteractBox : MonoBehaviour
         if (curObj != null)
             closestInteractable = curObj.GetComponent<Interactable>();
         else closestInteractable = null;
+
+        if (closestInteractable != null)
+            closestInteractable.FaceCheck(playerController, enter);
     }
 
     public void InteractPressed()

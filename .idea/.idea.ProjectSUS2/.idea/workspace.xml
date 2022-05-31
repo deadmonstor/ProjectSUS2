@@ -38,12 +38,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Suck.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/LevelSystem/Level.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Events.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Table.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/Customer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Bobbing.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIFaceCamera.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/PlateDispenser.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Events.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Customers/Customer.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">

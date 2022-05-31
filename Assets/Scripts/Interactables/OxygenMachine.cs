@@ -21,10 +21,13 @@ public class OxygenMachine : MonoBehaviour, Interactable
     [SerializeField] private string holdSound;
     [SerializeField] private string completeSound;
     private AudioSource holdSource;
+    [SerializeField] private GameObject bobDisplay;
+    [SerializeField] private Image bobSprite;
     private void Start()
     {
         canInteract = true;
         completionImage.transform.parent.gameObject.SetActive(false);
+        bobDisplay.SetActive(false);
     }
 
     private void Update()
@@ -51,6 +54,21 @@ public class OxygenMachine : MonoBehaviour, Interactable
     }
 
     public bool canInteract { get; set; }
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+            if (player.GetItem() != requiredItem)
+            {
+                bobDisplay.SetActive(true);
+                bobSprite.sprite = requiredItem.displaySprite;
+            }
+        }
+        else
+        {
+            bobDisplay.SetActive(false);
+        }
+    }
     public bool InteractPressed(PlayerController player)
     {
         if (!canInteract) return false;

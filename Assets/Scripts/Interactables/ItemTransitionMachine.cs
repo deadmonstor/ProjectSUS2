@@ -17,6 +17,7 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     private InteractType itemInteractType;
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
+    [SerializeField] private ItemSO requiredItem;
     [SerializeField] private bool shouldSpawnObject = true;
     [SerializeField] private bool requiresItemToCollect = false;
     [SerializeField] private ItemSO itemRequiredToCollect;
@@ -25,11 +26,15 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     [SerializeField] private string collectSound;
     [SerializeField] private string placeSound = "pluck_002";
     private AudioSource holdSource;
+
+    [SerializeField] private GameObject bobDisplay;
+    [SerializeField] private Image bobSprite;
     private void Start()
     {
         canInteract = true;
         hasItem = false;
         completionImage.transform.parent.gameObject.SetActive(false);
+        bobDisplay.SetActive(false);
     }
 
     private void Update()
@@ -54,6 +59,27 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     }
 
     public bool canInteract { get; set; }
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+            if (hasItem && player.GetItem() != itemRequiredToCollect)
+            {
+                bobDisplay.SetActive(true);
+                bobSprite.sprite = itemRequiredToCollect.displaySprite;
+            }
+            else if (player.GetItem() != requiredItem)
+            {
+                bobDisplay.SetActive(true);
+                bobSprite.sprite = requiredItem.displaySprite;
+            }
+        }
+        else
+        {
+            bobDisplay.SetActive(false);
+        }
+    }
+
     public bool InteractPressed(PlayerController player)
     {
         if (!canInteract) return false;
@@ -118,7 +144,7 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     }
     private bool TrySetItem(PlayerController player)
     {
-        if (player.GetItem() == null) return false;
+        
 
         foreach (var transition in player.GetItem().itemTransitions)
         {

@@ -20,6 +20,9 @@ public class PlateDispenser : MonoBehaviour, Interactable
 
     [SerializeField] private string collectSound;
     [SerializeField] private string returnSound;
+
+    public Transform movePoint;
+    
     private void Start()
     {
         canInteract = true;
@@ -39,10 +42,21 @@ public class PlateDispenser : MonoBehaviour, Interactable
     }
 
     public bool canInteract { get; set; }
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
     public bool InteractPressed(PlayerController player)
     {
         if (itemCount <= 0) return false;
-        if (player.GetItem() == itemToCollect) return false;
+        if (player.GetItem() != null) return false;
 
         transitioning = true;
         canInteract = false;
@@ -78,7 +92,7 @@ public class PlateDispenser : MonoBehaviour, Interactable
             Destroy(spawnedItem);
     }
 
-    private void AddDirtyPlate()
+    public void AddDirtyPlate()
     {
         itemCount++;
         text.text = itemCount.ToString();

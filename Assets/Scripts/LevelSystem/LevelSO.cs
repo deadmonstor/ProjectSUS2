@@ -8,4 +8,7 @@ public class LevelSO : ScriptableObject
     public List<Vector3> SpawnPoints;
     public int MaxCustomersSpawned;
     public bool UseOxygen;
+
+    public int TimeTillLose;
+    public string Music;
 }

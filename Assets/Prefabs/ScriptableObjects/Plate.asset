@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Plate
   itemTransitions: []
   itemPrefab: {fileID: 378342509392211508, guid: e818574425867604195b70ed9cd8a71e, type: 3}
+  displaySprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}

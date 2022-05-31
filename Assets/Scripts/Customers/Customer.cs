@@ -20,6 +20,18 @@ public class Customer : MonoBehaviour
     public GameObject gfxObject;
     public Transform indicatorTransform;
 
+    public Transform emptyStuffTransform;
+    public GameObject emptyPlatePrefab;
+    public GameObject emptyDrinkPrefab;
+
+    public GameObject emptyPlate;
+    public GameObject emptyGlass;
+    
+    private PlateDispenser _plateDispenser;
+
+    public bool hasSatDown;
+    public bool atPlateDispenser;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -36,6 +48,29 @@ public class Customer : MonoBehaviour
         _agent.SetDestination(table.chair.transform.position);
     }
 
+    public void MoveToPlateDispenser()
+    {
+        transform.GetComponent<NavMeshObstacle>().enabled = true;
+        _agent.updateRotation = true;
+        _agent.isStopped = false;
+        _agent.enabled = true;
+
+        _agent.SetDestination(_plateDispenser.movePoint.position);
+    }
+
+    public void GiveEmptyPlateAndGlass()
+    {
+        if (order.needsDrink)
+        {
+            emptyGlass = Instantiate(emptyDrinkPrefab.gameObject, emptyStuffTransform);
+        }
+
+        if (order.needsFood)
+        {
+            emptyPlate = Instantiate(emptyPlatePrefab.gameObject, emptyStuffTransform);
+        }
+    }
+    
     public void Vanish()
     {
         StartCoroutine(CoroutineVanish());
@@ -82,16 +117,38 @@ public class Customer : MonoBehaviour
             _agent.ResetPath();
             _agent.updateRotation = false;
             _agent.isStopped = true;
-            _agent.Warp(table.chair.transform.position);
-            table.chair.GetComponent<NavMeshObstacle>().enabled = true;
-            transform.GetComponent<NavMeshObstacle>().enabled = false;
-            indicatorTransform.gameObject.SetActive(true);
             _agent.enabled = false;
-            table.ClearItems();
-            RotateToTarget(table.transform);
+
+            if (!hasSatDown)
+            {
+                _agent.Warp(table.chair.transform.position);
+                table.chair.GetComponent<NavMeshObstacle>().enabled = true;
+                transform.GetComponent<NavMeshObstacle>().enabled = false;
+                indicatorTransform.gameObject.SetActive(true);
+                table.ClearItems();
+                RotateToTarget(table.transform);
+                hasSatDown = true;
+            }else if (!atPlateDispenser)
+            {
+                _agent.Warp(_plateDispenser.movePoint.position);
+                atPlateDispenser = true;
+                RotateToTarget(_plateDispenser.transform);
+                Events.OnCustomerArrivedAtPlateDispenser(this);
+                StartCoroutine(RemoveEmptyStuff());
+            }
 
             Events.OnCustomerSatDown(this);
         }
+    }
+
+    private IEnumerator RemoveEmptyStuff()
+    {
+        yield return new WaitForSeconds(1f);
+        _plateDispenser.AddDirtyPlate();
+        if (emptyGlass != null)
+            Destroy(emptyGlass.gameObject);
+        if (emptyPlate != null)
+            Destroy(emptyPlate.gameObject);
     }
 
     private void OnDrawGizmos()
@@ -118,5 +175,12 @@ public class Customer : MonoBehaviour
             return;
         
         _agent.SetDestination(table.chair.transform.position);
+    }
+
+    public void WalkToPlateDisplay(PlateDispenser plateDispenser)
+    {
+        _plateDispenser = plateDispenser;
+        GiveEmptyPlateAndGlass();
+        MoveToPlateDispenser();
     }
 }

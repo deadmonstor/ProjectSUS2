@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5faa7fbd484b28b07bac8e69d1eefa, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  LevelBuildID: 3
+  SpawnPoints:
+  - {x: -5.5, y: 0, z: -1.6}
+  - {x: -0.07, y: 0, z: -1.6}
+  - {x: -0.07, y: 0, z: -4.19}
+  - {x: -4.01, y: 0, z: -4.19}
+  MaxCustomersSpawned: 15
+  UseOxygen: 1
+  TimeTillLose: 120
+  Music: MusicLoop2

@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: -1758434837707848739}
   - component: {fileID: -1671308575303791404}
   - component: {fileID: 4451996092075239094}
+  - component: {fileID: 8582550256239222029}
   m_Layer: 6
   m_Name: PlateDispenser
   m_TagString: Untagged
@@ -169,6 +170,7 @@ Transform:
   m_Children:
   - {fileID: 329981604038572325}
   - {fileID: 643799248877858017}
+  - {fileID: 3696494183292443982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -288,6 +290,23 @@ MonoBehaviour:
   shouldSpawnObject: 1
   collectSound: confirmation_002
   returnSound: glass_006
+  movePoint: {fileID: 3696494183292443982}
+--- !u!208 &8582550256239222029
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329981603650879543}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.143, y: 0.65300006, z: 0.97900003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.27100003, y: -0.003, z: 1.006}
+  m_TimeToStationary: 0.5
 --- !u!1 &329981604038572326
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,3 +437,33 @@ Transform:
   m_Father: {fileID: 329981603650879538}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 39.777}
+--- !u!1 &4478208949463909708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3696494183292443982}
+  m_Layer: 6
+  m_Name: MovePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3696494183292443982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478208949463909708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.000000017026307, y: -1.5000002, z: 0.00000011920929}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 329981603650879538}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -263,6 +263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1754575855, guid: d0afddd4d70921b448cf2624004c41e9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3489001457788077730, guid: d0afddd4d70921b448cf2624004c41e9, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -828,6 +832,7 @@ MonoBehaviour:
   GameEndScreen: {fileID: 606962134}
   Levels:
   - {fileID: 11400000, guid: 2de1cf8c693c7c840a2e241429d04cdb, type: 2}
+  - {fileID: 11400000, guid: fdbeb8b376da2d74a9d46e5242b9313b, type: 2}
   currentLevelID: 0
   Walls:
   - {fileID: 1738055698}

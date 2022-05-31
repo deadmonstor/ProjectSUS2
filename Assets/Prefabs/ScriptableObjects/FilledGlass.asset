@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: FilledGlass
   itemTransitions: []
   itemPrefab: {fileID: 734708727751006116, guid: 73ec7c8838f51c3439ddc7c4acc21f44, type: 3}
+  displaySprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
