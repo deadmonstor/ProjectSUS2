@@ -81,7 +81,7 @@ public class PlateDispenser : MonoBehaviour, Interactable
             Destroy(spawnedItem);
     }
 
-    private void AddDirtyPlate()
+    public void AddDirtyPlate()
     {
         itemCount++;
         text.text = itemCount.ToString();

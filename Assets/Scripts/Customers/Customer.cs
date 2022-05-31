@@ -144,6 +144,7 @@ public class Customer : MonoBehaviour
     private IEnumerator RemoveEmptyStuff()
     {
         yield return new WaitForSeconds(1f);
+        _plateDispenser.AddDirtyPlate();
         if (emptyGlass != null)
             Destroy(emptyGlass.gameObject);
         if (emptyPlate != null)
