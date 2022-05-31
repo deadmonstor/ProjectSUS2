@@ -20,5 +20,5 @@ MonoBehaviour:
   - {x: -4.01, y: 0, z: -4.19}
   MaxCustomersSpawned: 10
   UseOxygen: 0
-  TimeTillLose: 120
+  TimeTillLose: 200
   Music: MusicLoop1
