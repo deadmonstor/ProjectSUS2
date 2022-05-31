@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private bool testing = true;
     [SerializeField] private PlayerInputManager playerInputManager;
+    [SerializeField] private List<Color> playerColors = new List<Color>();
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             var playerinput = playerInputManager.JoinPlayer(i, -1, "Gamepad", devices[i]);
             playerinput.gameObject.transform.position = so.SpawnPoints[spawnedPlayersIndex];
+            SetupColor(playerinput.gameObject, spawnedPlayersIndex);
             spawnedPlayersIndex++;
         }
 
@@ -31,7 +33,16 @@ public class GameManager : MonoBehaviour
             var keyboardMouse = Keyboard.current;
             var playerinput =  playerInputManager.JoinPlayer(spawnedPlayersIndex, -1, "", keyboardMouse);
             playerinput.gameObject.transform.position = so.SpawnPoints[spawnedPlayersIndex];
+            SetupColor(playerinput.gameObject, spawnedPlayersIndex);
         }
 
+    }
+
+    public void SetupColor(GameObject go, int spawnedPlayersIndex)
+    {
+        var playercontroller = go.GetComponent<PlayerController>();
+        
+        playercontroller.color = playerColors[spawnedPlayersIndex];
+        playercontroller.SetupColor(playercontroller.gameObject);
     }
 }

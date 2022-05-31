@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
     public ItemSO GetItem() { return item;}
+    public Color color;
+
+    [SerializeField] public List<Renderer> material = new List<Renderer>();
+    [SerializeField] public List<int> materialIndex = new List<int>();
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -70,5 +75,16 @@ public class PlayerController : MonoBehaviour
         
         item = _item;
         spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+    }
+    
+    public void SetupColor(GameObject go)
+    {
+        for (var i = 0; i < material.Count; i++)
+        {
+            var renderer = material[i];
+            var index = materialIndex[i];
+
+            renderer.materials[index].color = color;
+        }
     }
 }
