@@ -7,8 +7,7 @@ public class InteractBox : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
     [SerializeField] private LayerMask interactLayer;
-    public Interactable closestInteractable;
-    public GameObject closestGameObject;
+    private Interactable closestInteractable;
     private List<GameObject> objectsInRange;
     private void Start()
     {
@@ -39,7 +38,6 @@ public class InteractBox : MonoBehaviour
         if (objectsInRange.Count == 1)
         {
             closestInteractable = objectsInRange[0].GetComponent<Interactable>();
-            closestGameObject = objectsInRange[0];
             return;
         }
         
@@ -53,15 +51,16 @@ public class InteractBox : MonoBehaviour
         }
 
         if (curObj != null)
-        {
-            closestInteractable.FaceCheck(playerController, enter);
-            closestGameObject = objectsInRange[0];
-        }
+            closestInteractable = curObj.GetComponent<Interactable>();
         else
         {
+            if (closestInteractable != null)
+                closestInteractable.FaceCheck(playerController, enter);
             closestInteractable = null;
-            closestGameObject = null;
         }
+        if (closestInteractable != null)
+            closestInteractable.FaceCheck(playerController, enter);
+        
     }
 
     public void InteractPressed()

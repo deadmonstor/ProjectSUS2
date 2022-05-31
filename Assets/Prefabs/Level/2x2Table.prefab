@@ -1136,6 +1136,9 @@ MonoBehaviour:
   chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   itemSpawnpoint: {fileID: 4411192074841458762}
   drinkSpawnpoint: {fileID: 5828881554564163808}
+  placeSound: click_002
+  drinkGhostPrefab: {fileID: 734708727751006116, guid: 19cbd017b8811e6449b80e9b46f919d9, type: 3}
+  foodGhostPrefab: {fileID: 5375758773533737027, guid: 32ac3aece541c354fa2e738ba6b95832, type: 3}
   chair: {fileID: 0}
 --- !u!65 &3523928638094108180
 BoxCollider:
@@ -1183,6 +1186,9 @@ MonoBehaviour:
   chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   itemSpawnpoint: {fileID: 373688421313386558}
   drinkSpawnpoint: {fileID: 9024709391897640257}
+  placeSound: click_002
+  drinkGhostPrefab: {fileID: 734708727751006116, guid: 19cbd017b8811e6449b80e9b46f919d9, type: 3}
+  foodGhostPrefab: {fileID: 5375758773533737027, guid: 32ac3aece541c354fa2e738ba6b95832, type: 3}
   chair: {fileID: 0}
 --- !u!65 &3523928636574115259
 BoxCollider:
@@ -1230,6 +1236,9 @@ MonoBehaviour:
   chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   itemSpawnpoint: {fileID: 4734865997701870610}
   drinkSpawnpoint: {fileID: 4139106903698480922}
+  placeSound: click_002
+  drinkGhostPrefab: {fileID: 734708727751006116, guid: 19cbd017b8811e6449b80e9b46f919d9, type: 3}
+  foodGhostPrefab: {fileID: 5375758773533737027, guid: 32ac3aece541c354fa2e738ba6b95832, type: 3}
   chair: {fileID: 0}
 --- !u!65 &3523928636814394988
 BoxCollider:
@@ -1277,6 +1286,9 @@ MonoBehaviour:
   chairMesh: {fileID: 5060444177187149915, guid: 8819bbc713facc046a6c7be70b262561, type: 3}
   itemSpawnpoint: {fileID: 1060778889556690585}
   drinkSpawnpoint: {fileID: 3303214530234101676}
+  placeSound: click_002
+  drinkGhostPrefab: {fileID: 734708727751006116, guid: 19cbd017b8811e6449b80e9b46f919d9, type: 3}
+  foodGhostPrefab: {fileID: 5375758773533737027, guid: 32ac3aece541c354fa2e738ba6b95832, type: 3}
   chair: {fileID: 0}
 --- !u!1 &4535795734659960150
 GameObject:

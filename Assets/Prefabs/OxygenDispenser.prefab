@@ -106,7 +106,7 @@ MonoBehaviour:
   machineType: 2
   completionImage: {fileID: 2124906887143995341}
   itemSpawnpoint: {fileID: 6079924911805304920}
-  requiredItem: {fileID: 0}
+  requiredItem: {fileID: 11400000, guid: 1240f4fca9fb893408c194af37d63f9b, type: 2}
   shouldSpawnObject: 1
   requiresItemToCollect: 0
   itemRequiredToCollect: {fileID: 0}

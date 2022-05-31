@@ -3,7 +3,17 @@ guid: 2c06f613aa70cc84398c1018941d372f
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: fa12b1b605152984a8dbedc680276b82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sink block
+    second: {fileID: 2100000, guid: e54655c7eeed6994d9a1863bd09b7024, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

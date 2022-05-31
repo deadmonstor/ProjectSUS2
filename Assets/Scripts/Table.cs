@@ -42,6 +42,12 @@ public class Table : MonoBehaviour, Interactable
     private GameObject spawnedItem;
     private GameObject spawnedDrink;
 
+    private GameObject ghostFood;
+    private GameObject ghostDrink;
+    
+    public GameObject drinkGhostPrefab;
+    public GameObject foodGhostPrefab;
+
     public GameObject chair;
 
     private void Start()
@@ -49,17 +55,43 @@ public class Table : MonoBehaviour, Interactable
         chair = GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), chairPrefab.transform.rotation);
     }
 
-    public void PutOnTable(ItemSO item)
+    public void SpawnGhost(Order order)
+    {
+        if (order.needsDrink)
+        {
+            ghostDrink = Instantiate(drinkGhostPrefab, drinkSpawnpoint);
+        }
+
+        if (order.needsFood)
+        {
+            ghostFood = Instantiate(foodGhostPrefab, itemSpawnpoint);
+        }
+    }
+    public void PutOnTable(PlayerController playerController, ItemSO item)
     {
         if (item.itemName == "FilledGlass" && spawnedDrink == null)
         {
+            if (ghostDrink != null)
+            {
+                Destroy(ghostDrink.gameObject);
+            }
             spawnedDrink = Instantiate(item.itemPrefab, drinkSpawnpoint);
+            playerController.SetItem(null);
             Events.OnItemPutOnCustomerTable(this, item);
         }
-        else if (spawnedItem == null)
+        else if (spawnedItem == null && item.itemName == "HydratedFood")
         {
+            if (ghostFood != null)
+            {
+                Destroy(ghostFood.gameObject);
+            }
             spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+            playerController.SetItem(null);
             Events.OnItemPutOnCustomerTable(this, item);
+        }
+        else
+        {
+            return;
         }
 
         if (placeSound != "")
@@ -116,8 +148,7 @@ public class Table : MonoBehaviour, Interactable
      
         if (_canInteract && item != null)
         {
-            PutOnTable(item);
-            player.SetItem(null);
+            PutOnTable(player, item);
         }
 
         return true;
