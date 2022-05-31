@@ -7,12 +7,13 @@ public class OxygenManager : MonoBehaviour
     private static float oxygen;
     public static float Oxygen => oxygen;
 
-    [SerializeField] private float timeToDrain;
-    [SerializeField] private float timer;
+    private static float timeToDrain = 30;
+    private static float timer;
 
     public static void FillOxygen()
     {
         oxygen = maxOxygen;
+        timer = timeToDrain;
     }
 
     private void Start()
