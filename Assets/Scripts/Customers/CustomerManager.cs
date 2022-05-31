@@ -126,7 +126,7 @@ public class CustomerManager : MonoBehaviour
             return;
         
         Order order = activeCustomers[table].order;
-        if (item.itemName == "HydratedFood" && order.needsFood && !order.hasFood)
+        if ((item.itemName == "Glass" || item.itemName == "HydratedFood") && order.needsFood && !order.hasFood)
         {
             order.hasFood = true;
         }
@@ -181,8 +181,7 @@ public class Order
 
     public Order()
     {
-        //_orderOption = Random.Range(0, 3);
-        _orderOption = 0;
+        _orderOption = Random.Range(0, 3);
 
         switch (_orderOption)
         {
