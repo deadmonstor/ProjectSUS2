@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: HydratedFood
   itemTransitions: []
-  itemPrefab: {fileID: 378342509392211508, guid: e818574425867604195b70ed9cd8a71e, type: 3}
+  itemPrefab: {fileID: 5375758773533737027, guid: 1ab5e549640a6b8428a9ceaecdf61e75, type: 3}

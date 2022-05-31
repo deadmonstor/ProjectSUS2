@@ -7,7 +7,8 @@ public class OxygenManager : MonoBehaviour
     private static float oxygen;
     public static float Oxygen => oxygen;
 
-    [SerializeField] private float oxygenToLosePerSecond;
+    [SerializeField] private float timeToDrain;
+    [SerializeField] private float timer;
 
     public static void FillOxygen()
     {
@@ -17,13 +18,15 @@ public class OxygenManager : MonoBehaviour
     private void Start()
     {
         oxygen = maxOxygen;
+        timer = timeToDrain;
     }
 
     private void Update()
     {
         if (oxygen <= 0) return;
-
-        oxygen -= oxygenToLosePerSecond * Time.deltaTime;
+        
+        timer -= Time.deltaTime;
+        oxygen = timer / timeToDrain;
         Events.OnUpdateOxygen();
         if (oxygen <= 0)
         {

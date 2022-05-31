@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Plate
   itemTransitions: []
-  itemPrefab: {fileID: 3142356585645401601, guid: 00860da8de4fc494aad629de5fb1974d, type: 3}
+  itemPrefab: {fileID: 378342509392211508, guid: e818574425867604195b70ed9cd8a71e, type: 3}
