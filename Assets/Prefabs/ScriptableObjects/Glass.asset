@@ -19,3 +19,4 @@ MonoBehaviour:
     transitionTime: 3
     interactType: 0
   itemPrefab: {fileID: 4724263820935756016, guid: 908ad301da6c9da479a4f98ebcfeaa09, type: 3}
+  displaySprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}

@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: FullTank
   itemTransitions: []
   itemPrefab: {fileID: 6689741768182377481, guid: 819d5c98ff8c52f47b2ed6a0072ff1df, type: 3}
+  displaySprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
