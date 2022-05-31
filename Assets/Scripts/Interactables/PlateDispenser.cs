@@ -17,7 +17,8 @@ public class PlateDispenser : MonoBehaviour, Interactable
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
     [SerializeField] private bool shouldSpawnObject = true;
-
+    [SerializeField] private GameObject holdInteractDisplay;
+    [SerializeField] private GameObject pressInteractDisplay;
     [SerializeField] private string collectSound;
     [SerializeField] private string returnSound;
 
@@ -46,11 +47,15 @@ public class PlateDispenser : MonoBehaviour, Interactable
     {
         if (enter)
         {
-            
+            if (itemInteractType == InteractType.Hold)
+                holdInteractDisplay.SetActive(true);
+            else if (itemInteractType == InteractType.Press)
+                pressInteractDisplay.SetActive(true);
         }
         else
         {
-            
+            holdInteractDisplay.SetActive(false);
+            pressInteractDisplay.SetActive(false);
         }
     }
     public bool InteractPressed(PlayerController player)

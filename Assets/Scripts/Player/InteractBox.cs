@@ -36,9 +36,13 @@ public class InteractBox : MonoBehaviour
         float curDist = Single.MaxValue;
         GameObject curObj = null;
         
+        if (closestInteractable != null)
+            closestInteractable.FaceCheck(playerController, false);
+        
         if (objectsInRange.Count == 1)
         {
             closestInteractable = objectsInRange[0].GetComponent<Interactable>();
+            closestInteractable.FaceCheck(playerController, enter);
             closestGameObject = objectsInRange[0];
             return;
         }
@@ -51,7 +55,7 @@ public class InteractBox : MonoBehaviour
                 curDist = Vector3.Distance(transform.position, obj.transform.position);
             }
         }
-
+        
         if (curObj != null)
         {
             closestInteractable = curObj.GetComponent<Interactable>();

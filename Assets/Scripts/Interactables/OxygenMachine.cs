@@ -23,6 +23,8 @@ public class OxygenMachine : MonoBehaviour, Interactable
     private AudioSource holdSource;
     [SerializeField] private GameObject bobDisplay;
     [SerializeField] private Image bobSprite;
+    [SerializeField] private GameObject holdInteractDisplay;
+    [SerializeField] private GameObject pressInteractDisplay;
     private void Start()
     {
         canInteract = true;
@@ -63,10 +65,20 @@ public class OxygenMachine : MonoBehaviour, Interactable
                 bobDisplay.SetActive(true);
                 bobSprite.sprite = requiredItem.displaySprite;
             }
+            else
+            {
+                bobDisplay.SetActive(false);
+                if (itemInteractType == InteractType.Hold)
+                    holdInteractDisplay.SetActive(true);
+                else if (itemInteractType == InteractType.Press)
+                    pressInteractDisplay.SetActive(true);
+            }
         }
         else
         {
             bobDisplay.SetActive(false);
+            holdInteractDisplay.SetActive(false);
+            pressInteractDisplay.SetActive(false);
         }
     }
     public bool InteractPressed(PlayerController player)

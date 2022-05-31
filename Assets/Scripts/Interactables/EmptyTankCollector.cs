@@ -19,6 +19,8 @@ public class EmptyTankCollector : MonoBehaviour, Interactable
     [SerializeField] private bool shouldSpawnObject = true;
     [SerializeField] private string collectSound;
     [SerializeField] private string returnSound;
+    [SerializeField] private GameObject holdInteractDisplay;
+    [SerializeField] private GameObject pressInteractDisplay;
     private void Start()
     {
         canInteract = true;
@@ -42,11 +44,15 @@ public class EmptyTankCollector : MonoBehaviour, Interactable
     {
         if (enter)
         {
-            
+            if (itemInteractType == InteractType.Hold)
+                holdInteractDisplay.SetActive(true);
+            else if (itemInteractType == InteractType.Press)
+                pressInteractDisplay.SetActive(true);
         }
         else
         {
-            
+            holdInteractDisplay.SetActive(false);
+            pressInteractDisplay.SetActive(false);
         }
     }
     public bool InteractPressed(PlayerController player)

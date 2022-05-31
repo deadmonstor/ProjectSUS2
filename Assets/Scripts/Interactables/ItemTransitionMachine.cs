@@ -28,6 +28,8 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     private AudioSource holdSource;
 
     [SerializeField] private GameObject bobDisplay;
+    [SerializeField] private GameObject holdInteractDisplay;
+    [SerializeField] private GameObject pressInteractDisplay;
     [SerializeField] private Image bobSprite;
     private void Start()
     {
@@ -61,22 +63,33 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     public bool canInteract { get; set; }
     public void FaceCheck(PlayerController player, bool enter)
     {
+        Debug.Log(enter);
         if (enter)
         {
-            if (hasItem && player.GetItem() != itemRequiredToCollect)
+            if (!transitioning && hasItem && (player.GetItem() != itemRequiredToCollect || player.GetItem() == null))
             {
                 bobDisplay.SetActive(true);
                 bobSprite.sprite = itemRequiredToCollect.displaySprite;
             }
-            else if (player.GetItem() == null || player.GetItem() != requiredItem)
+            else if (!hasItem && (player.GetItem() == null || player.GetItem() != requiredItem))
             {
                 bobDisplay.SetActive(true);
                 bobSprite.sprite = requiredItem.displaySprite;
+            }
+            else
+            {
+                bobDisplay.SetActive(false);
+                if (itemInteractType == InteractType.Hold)
+                    holdInteractDisplay.SetActive(true);
+                else if (itemInteractType == InteractType.Press)
+                    pressInteractDisplay.SetActive(true);
             }
         }
         else
         {
             bobDisplay.SetActive(false);
+            holdInteractDisplay.SetActive(false);
+            pressInteractDisplay.SetActive(false);
         }
     }
 
@@ -140,11 +153,12 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
         hasItem = false;
         RemoveMesh();
         StopTransition();
+        FaceCheck(player, true);
         return true;
     }
     private bool TrySetItem(PlayerController player)
     {
-        
+        if (player.GetItem() == null) return false;
 
         foreach (var transition in player.GetItem().itemTransitions)
         {

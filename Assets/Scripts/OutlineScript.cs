@@ -16,10 +16,18 @@ public class OutlineScript : MonoBehaviour
     {
         GameObject outlineObject = Instantiate(this.gameObject, transform.position, transform.rotation ,transform);
         Renderer rend = outlineObject.GetComponent<Renderer>();
-        rend.material = outlineMat;
-        rend.material.SetColor("_OutlineColor", color);
-        rend.material.SetFloat("_ScaleFactor", scaleFactor);
+        
+        Material[] mats = rend.materials;
+        for (var index = 0; index < mats.Length; index++)
+        {
+            mats[index] = outlineMat;
+        }
+
+        rend.materials = mats;
+        outlineMat.SetColor("_OutlineColor", color);
+        outlineMat.SetFloat("_OutlineWidth", scaleFactor);
         rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        
         outlineObject.GetComponent<OutlineScript>().enabled = false;
         outlineObject.GetComponent<Collider>().enabled = false;
         rend.enabled = false;
