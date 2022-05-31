@@ -2609,7 +2609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bee5a264415a5449582db5c856e832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: 3154.5
+  rotation: 0
+  skyboxMat: {fileID: 2100000, guid: d8c0d4010f9416945912d97b9e581cf6, type: 2}
 --- !u!4 &1412992925
 Transform:
   m_ObjectHideFlags: 0
