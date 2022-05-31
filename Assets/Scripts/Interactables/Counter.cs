@@ -8,7 +8,7 @@ public class Counter : MonoBehaviour, Interactable
     private ItemSO currentItem;
     private GameObject spawnedItem;
     [SerializeField] private Transform itemSpawnpoint;
-
+    [SerializeField] private bool shouldSpawnObject = true;
     public bool canInteract { get; set; }
     public bool InteractPressed(PlayerController player)
     {
@@ -45,12 +45,14 @@ public class Counter : MonoBehaviour, Interactable
     }
     
     private void SetMesh(ItemSO item)
-    {
-        spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+    {        
+        if (shouldSpawnObject)
+            spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
     }
 
     private void RemoveMesh()
     {
-        Destroy(spawnedItem);
+        if (shouldSpawnObject)
+            Destroy(spawnedItem);
     }
 }

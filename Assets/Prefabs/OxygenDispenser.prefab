@@ -102,9 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd955195f39c02b44a62dad8a2a7c82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineType: 0
+  machineType: 2
   completionImage: {fileID: 2124906887143995341}
   itemSpawnpoint: {fileID: 6079924911805304920}
+  shouldSpawnObject: 1
 --- !u!65 &8496551204957371296
 BoxCollider:
   m_ObjectHideFlags: 0

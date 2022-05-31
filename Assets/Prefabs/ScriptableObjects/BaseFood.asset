@@ -17,5 +17,5 @@ MonoBehaviour:
   - machineToUse: 0
     itemToGet: {fileID: 11400000, guid: 38005a0865b01384fa485f88feb01526, type: 2}
     transitionTime: 3
-    interactType: 0
+    interactType: 1
   itemPrefab: {fileID: 7378208395625370808, guid: 840479994f8d31444908d81e1ab1a731, type: 3}

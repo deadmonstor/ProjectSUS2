@@ -16,6 +16,7 @@ public class OxygenMachine : MonoBehaviour, Interactable
     [SerializeField] private InteractType itemInteractType;
     private GameObject spawnedItem;
     [SerializeField] private float removeTime;
+    [SerializeField] private bool shouldSpawnObject = true;
     private void Start()
     {
         canInteract = true;
@@ -52,7 +53,8 @@ public class OxygenMachine : MonoBehaviour, Interactable
         canInteract = false;
         timer = 0;
         completionImage.transform.parent.gameObject.SetActive(true);
-        spawnedItem = Instantiate(player.GetItem().itemPrefab, itemSpawnpoint);
+        if (shouldSpawnObject)
+            spawnedItem = Instantiate(player.GetItem().itemPrefab, itemSpawnpoint);
         player.SetItem(null);
 
         
@@ -91,7 +93,8 @@ public class OxygenMachine : MonoBehaviour, Interactable
     private IEnumerator RemoveCoroutine()
     {
         yield return new WaitForSeconds(removeTime);
-        Destroy(spawnedItem);
+        if (shouldSpawnObject)
+            Destroy(spawnedItem);
         Events.OnAddEmptyTank();
     }
 

@@ -119,6 +119,7 @@ MonoBehaviour:
   itemToCollect: {fileID: 11400000, guid: 3afb655dfd8a4d34b9af6d6290e725d2, type: 2}
   itemInteractType: 1
   itemSpawnpoint: {fileID: 1216711234026783087}
+  shouldSpawnObject: 0
 --- !u!54 &-4923282717763664560
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class CollectionMachine : MonoBehaviour, Interactable
     [SerializeField] private InteractType itemInteractType;
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
+    [SerializeField] private bool shouldSpawnObject = true;
     private void Start()
     {
         canInteract = true;
@@ -73,11 +74,13 @@ public class CollectionMachine : MonoBehaviour, Interactable
     
     private void SetMesh(ItemSO item)
     {
-        spawnedItem = Instantiate(itemToCollect.itemPrefab, itemSpawnpoint);
+        if (shouldSpawnObject)
+            spawnedItem = Instantiate(itemToCollect.itemPrefab, itemSpawnpoint);
     }
 
     private void RemoveMesh()
     {
-        Destroy(spawnedItem);
+        if (shouldSpawnObject)
+            Destroy(spawnedItem);
     }
 }

@@ -17,7 +17,7 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     private InteractType itemInteractType;
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
-
+    [SerializeField] private bool shouldSpawnObject = true;
     private void Start()
     {
         canInteract = true;
@@ -124,12 +124,16 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
 
     private void SetMesh(ItemSO item)
     {
+        if (!shouldSpawnObject) return;
+
         RemoveMesh();
         spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
     }
 
     private void RemoveMesh()
     {
+        if (!shouldSpawnObject) return;
+
         if (spawnedItem == null) return;
 
         Destroy(spawnedItem);
