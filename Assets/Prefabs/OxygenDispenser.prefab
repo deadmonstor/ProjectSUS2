@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2124906886534064091}
   - component: {fileID: 4213104564826558769}
   - component: {fileID: 8496551204957371296}
+  - component: {fileID: 8175152589876175638}
+  - component: {fileID: -661521255624523023}
   m_Layer: 6
   m_Name: OxygenDispenser
   m_TagString: Untagged
@@ -116,6 +118,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0533578, y: 1.1476188, z: 2.6888623}
   m_Center: {x: 0, y: 0, z: 1.3444312}
+--- !u!54 &8175152589876175638
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124906886534064088}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-661521255624523023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124906886534064088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30555baad8d00a4cb780d6ee1b172a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableForce: 0
 --- !u!1 &2124906886682134634
 GameObject:
   m_ObjectHideFlags: 0

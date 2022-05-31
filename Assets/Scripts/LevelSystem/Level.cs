@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
@@ -31,9 +32,17 @@ namespace LevelSystem
         
         public bool IsGameRunning { get; private set; } = false;
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(StartGame()); // TODO: This should be moved to the UI
+            
+            Events.onCustomerOrderCompleted += i =>
+            {
+                if (i == 0)
+                {
+                    Win();
+                }
+            };
         }
         
         public IEnumerator StartGame()
@@ -73,6 +82,8 @@ namespace LevelSystem
         
         public IEnumerator Lose()
         {
+            if (!IsGameRunning) yield break;
+            
             foreach (var objs in Walls)
             {
                 var rb = objs.GetComponent<Rigidbody>();
@@ -98,6 +109,12 @@ namespace LevelSystem
                     rb.constraints = RigidbodyConstraints.None;
 
                     objs.GetComponent<Suck>().enableForce = true;
+                    
+                    objs.TryGetComponent<NavMeshAgent>(out var navmeshAgent);
+                    if (navmeshAgent)
+                    {
+                        navmeshAgent.enabled = false;
+                    }
                 }
 
                 i++;
