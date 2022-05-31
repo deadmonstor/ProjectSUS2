@@ -67,8 +67,7 @@ public class Table : MonoBehaviour, Interactable
             ghostFood = Instantiate(foodGhostPrefab, itemSpawnpoint);
         }
     }
-    
-    public void PutOnTable(ItemSO item)
+    public void PutOnTable(PlayerController playerController, ItemSO item)
     {
         if (item.itemName == "FilledGlass" && spawnedDrink == null)
         {
@@ -77,6 +76,7 @@ public class Table : MonoBehaviour, Interactable
                 Destroy(ghostDrink.gameObject);
             }
             spawnedDrink = Instantiate(item.itemPrefab, drinkSpawnpoint);
+            playerController.SetItem(null);
             Events.OnItemPutOnCustomerTable(this, item);
         }
         else if (spawnedItem == null && item.itemName == "HydratedFood")
@@ -86,6 +86,7 @@ public class Table : MonoBehaviour, Interactable
                 Destroy(ghostFood.gameObject);
             }
             spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+            playerController.SetItem(null);
             Events.OnItemPutOnCustomerTable(this, item);
         }
         else
@@ -147,8 +148,7 @@ public class Table : MonoBehaviour, Interactable
      
         if (_canInteract && item != null)
         {
-            PutOnTable(item);
-            player.SetItem(null);
+            PutOnTable(player, item);
         }
 
         return true;
