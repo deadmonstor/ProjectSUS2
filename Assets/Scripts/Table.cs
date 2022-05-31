@@ -74,6 +74,11 @@ public class Table : MonoBehaviour, Interactable
             Destroy(spawnedItem.gameObject);
         }
 
+        if (spawnedDrink != null)
+        {
+            Destroy(spawnedDrink.gameObject);
+        }
+
         _canInteract = true;
     }
 
