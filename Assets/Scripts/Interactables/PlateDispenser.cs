@@ -20,6 +20,9 @@ public class PlateDispenser : MonoBehaviour, Interactable
 
     [SerializeField] private string collectSound;
     [SerializeField] private string returnSound;
+
+    public Transform movePoint;
+    
     private void Start()
     {
         canInteract = true;
@@ -89,7 +92,7 @@ public class PlateDispenser : MonoBehaviour, Interactable
             Destroy(spawnedItem);
     }
 
-    private void AddDirtyPlate()
+    public void AddDirtyPlate()
     {
         itemCount++;
         text.text = itemCount.ToString();

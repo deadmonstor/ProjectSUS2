@@ -16,6 +16,8 @@ public class CustomerManager : MonoBehaviour
     
     [SerializeField] private Table[] tables;
     [SerializeField] private List<Table> availableTables = new List<Table>();
+    
+    private PlateDispenser _plateDispenser;
 
     private int _customersRemaining;
     private int _totalSpawnedCustomers;
@@ -34,7 +36,7 @@ public class CustomerManager : MonoBehaviour
         Events.onItemPutOnCustomerTable += ItemPutOnTable;
         Events.onLevelLoaded += LevelLoaded;
         Events.onCustomerSatDown += CustomerSatDown;
-        
+        Events.onCustomerArrivedAtPlateDispenser += ArrivedAtPlateDispenser;
     }
 
     private void OnDisable()
@@ -43,6 +45,23 @@ public class CustomerManager : MonoBehaviour
         Events.onItemPutOnCustomerTable -= ItemPutOnTable;
         Events.onLevelLoaded -= LevelLoaded;
         Events.onCustomerSatDown -= CustomerSatDown;
+        Events.onCustomerArrivedAtPlateDispenser -= ArrivedAtPlateDispenser;
+    }
+
+    private void ArrivedAtPlateDispenser(Customer customer)
+    {
+        StartCoroutine(CustomerArrivedAtPlateDispenser(customer));
+    }
+
+    private IEnumerator CustomerArrivedAtPlateDispenser(Customer customer)
+    {
+        customer.Vanish();
+        
+        yield return new WaitForSeconds(2f);
+        _customersRemaining--;
+        Events.OnCustomerOrderCompleted(_customersRemaining);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(SpawnNewCustomer());
     }
 
     private void Update()
@@ -67,7 +86,8 @@ public class CustomerManager : MonoBehaviour
 
     private void LevelLoaded(LevelSO index)
     {
-        // TODO : ADD CONTEXT OF LEVEL
+        _plateDispenser = FindObjectOfType<PlateDispenser>();
+        
         _customersRemaining = index.MaxCustomersSpawned;
         SpawnCustomer();
     }
@@ -156,12 +176,7 @@ public class CustomerManager : MonoBehaviour
         table.ClearItems();
         activeCustomers.Remove(table);
         availableTables.Add(table);
-        customer.Vanish();
-        yield return new WaitForSeconds(2f);
-        _customersRemaining--;
-        Events.OnCustomerOrderCompleted(_customersRemaining);
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(SpawnNewCustomer());
+        customer.WalkToPlateDisplay(_plateDispenser);
     }
 
     private IEnumerator SpawnNewCustomer()
