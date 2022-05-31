@@ -16,7 +16,9 @@ Shader "Toon/Toon Complete"
 		{
 			Name "OUTLINEPASS"
 
-			ZWrite off
+			ZWrite Off
+	        Blend SrcAlpha OneMinusSrcAlpha
+	        LOD 100
 
 			CGPROGRAM
 			
