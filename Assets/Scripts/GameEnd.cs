@@ -18,7 +18,11 @@ public class GameEnd : MonoBehaviour
 
     public void Continue()
     {
-        StartCoroutine(level.StartGame());
+        SceneManager.UnloadScene(2);
+        SceneManager.UnloadScene(1);
+        SceneManager.LoadScene(1);
+        
+        this.gameObject.SetActive(false);
     }
     
     public void QuitToMenu()

@@ -16,8 +16,7 @@ namespace LevelSystem
         public GameObject GameEndScreen;
 
         public List<LevelSO> Levels;
-        public int currentLevelID = 0;
-
+        public static int currentLevelID = 0;
         public List<GameObject> Walls = new List<GameObject>();
 
         private Scene _currentLoadedScene;
@@ -30,6 +29,7 @@ namespace LevelSystem
 
         private void Start()
         {
+            DontDestroyOnLoad(this);
             StartCoroutine(StartGame()); // TODO: This should be moved to the UI
             
             Events.onCustomerOrderCompleted += i =>
@@ -70,6 +70,7 @@ namespace LevelSystem
             Events.OnLevelLoaded(Levels[currentLevelID]);
 
             GameTimeBeforeLose = Levels[currentLevelID].TimeTillLose;
+            currentLevelID++;
             
             yield return new WaitForSeconds(GameTimeBeforeLose);
             StartCoroutine(Lose());
