@@ -35,10 +35,11 @@ public class Table : MonoBehaviour, Interactable
     [SerializeField] private CharDirection chairDirection;
     [SerializeField] private GameObject chairPrefab;
     [SerializeField] private Mesh chairMesh;
-    [SerializeField] private GameObject plate;
     [SerializeField] private Transform itemSpawnpoint;
+    [SerializeField] private Transform drinkSpawnpoint;
     
     private GameObject spawnedItem;
+    private GameObject spawnedDrink;
 
     public GameObject chair;
 
@@ -49,10 +50,21 @@ public class Table : MonoBehaviour, Interactable
 
     public void PutOnTable(ItemSO item)
     {
-        spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
-        
-        _canInteract = false;
-        Events.OnItemPutOnCustomerTable(this, item);
+        if (item.itemName == "FilledGlass" && spawnedDrink == null)
+        {
+            spawnedDrink = Instantiate(item.itemPrefab, drinkSpawnpoint);
+            Events.OnItemPutOnCustomerTable(this, item);
+        }
+        else if (spawnedItem == null)
+        {
+            spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
+            Events.OnItemPutOnCustomerTable(this, item);
+        }
+
+        if (spawnedDrink != null && spawnedItem != null)
+        {
+            _canInteract = false;
+        }
     }
 
     public void ClearItems()
@@ -65,6 +77,7 @@ public class Table : MonoBehaviour, Interactable
         _canInteract = true;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
@@ -72,6 +85,7 @@ public class Table : MonoBehaviour, Interactable
         
         Gizmos.DrawMesh(chairMesh, transform.position + GetOffset(), Quaternion.Euler(new Vector3(-90, 0, 90)));
     }
+#endif
 
     private bool _canInteract = true;
     public bool canInteract => _canInteract;
