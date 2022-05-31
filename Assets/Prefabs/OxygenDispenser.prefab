@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8496551204957371296}
   - component: {fileID: 8175152589876175638}
   - component: {fileID: -661521255624523023}
+  - component: {fileID: 188780431868723683}
   m_Layer: 6
   m_Name: OxygenDispenser
   m_TagString: Untagged
@@ -161,6 +162,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableForce: 0
+--- !u!114 &188780431868723683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124906886534064088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ee40020d4b4659a2aa045c3cea9f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: 103dd6df9ca4b224c9b0b0860eb865a8, type: 2}
+  outlineScaleFactor: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 0.47058824}
+  outlineRenderer: {fileID: 2124906886534064091}
 --- !u!1 &2124906886682134634
 GameObject:
   m_ObjectHideFlags: 0

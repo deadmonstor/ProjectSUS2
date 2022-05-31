@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 2761530271616004324}
   - component: {fileID: -4185860330080040960}
   - component: {fileID: 5433505674455520467}
+  - component: {fileID: 5211669245523195140}
   m_Layer: 6
   m_Name: MREBox
   m_TagString: Untagged
@@ -333,6 +334,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableForce: 0
+--- !u!114 &5211669245523195140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116309125283529727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ee40020d4b4659a2aa045c3cea9f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: 103dd6df9ca4b224c9b0b0860eb865a8, type: 2}
+  outlineScaleFactor: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 0.47058824}
+  outlineRenderer: {fileID: 4116309125283529724}
 --- !u!1 &5133844632306810610
 GameObject:
   m_ObjectHideFlags: 0
