@@ -72,6 +72,8 @@ namespace LevelSystem
             yield return new WaitForSeconds(1f);
             
             Events.OnLevelLoaded(Levels[currentLevelID]);
+
+            GameTimeBeforeLose = Levels[currentLevelID].TimeTillLose;
             
             yield return new WaitForSeconds(GameTimeBeforeLose);
             StartCoroutine(Lose());
@@ -80,7 +82,7 @@ namespace LevelSystem
         private void Update()
         {
             GameTime += Time.deltaTime;
-            TimeText.SetText("Time: " + (int)GameTime);
+            TimeText.SetText("Time: " + ((int)GameTimeBeforeLose - (int)GameTime));
         }
 
         // ReSharper disable Unity.PerformanceAnalysis

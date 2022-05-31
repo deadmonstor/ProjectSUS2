@@ -27,7 +27,7 @@ public class CustomerManager : MonoBehaviour
 
     private Dictionary<Table, Customer> activeCustomers = new Dictionary<Table, Customer>();
 
-
+    [SerializeField] private string spawnSound = "scroll_004";
     private void OnEnable()
     {
         SceneManager.sceneLoaded += SceneLoaded;
@@ -92,7 +92,8 @@ public class CustomerManager : MonoBehaviour
         customer.Warp(spawnPoint);
         StartCoroutine(MoveToTarget(customer));
         _totalSpawnedCustomers++;
-
+        if (spawnSound != "")
+            SoundManager.PlaySFX(spawnSound, spawnPoint.position);
     }
 
     private IEnumerator MoveToTarget(Customer customer)
