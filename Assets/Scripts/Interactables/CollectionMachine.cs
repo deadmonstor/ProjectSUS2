@@ -15,6 +15,8 @@ public class CollectionMachine : MonoBehaviour, Interactable
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
     [SerializeField] private bool shouldSpawnObject = true;
+
+    [SerializeField] private string collectSound;
     private void Start()
     {
         canInteract = true;
@@ -53,6 +55,9 @@ public class CollectionMachine : MonoBehaviour, Interactable
         RemoveMesh();
         
         player.SetItem(itemToCollect);
+
+        if (collectSound != "")
+            SoundManager.PlaySFX(collectSound, transform.position);
         
         if (itemInteractType == InteractType.Hold)
             player.ToggleMovement(false);

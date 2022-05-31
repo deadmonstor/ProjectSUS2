@@ -10,6 +10,8 @@ public class Counter : MonoBehaviour, Interactable
     [SerializeField] private Transform itemSpawnpoint;
     [SerializeField] private bool shouldSpawnObject = true;
     public bool canInteract { get; set; }
+    [SerializeField] private string placeSound;
+    [SerializeField] private string collectSound;
     public bool InteractPressed(PlayerController player)
     {
         if (hasItem)
@@ -33,6 +35,8 @@ public class Counter : MonoBehaviour, Interactable
         currentItem = null;
         hasItem = false;
         RemoveMesh();
+        if (collectSound != "")
+            SoundManager.PlaySFX(collectSound, transform.position);
         return true;
     }
     private bool TrySetItem(PlayerController player)
@@ -43,6 +47,8 @@ public class Counter : MonoBehaviour, Interactable
         currentItem = player.GetItem();
         SetMesh(currentItem);
         player.SetItem(null);
+        if (placeSound != "")
+            SoundManager.PlaySFX(placeSound, transform.position);
         return true;
     }
     

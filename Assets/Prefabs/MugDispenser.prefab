@@ -120,6 +120,7 @@ MonoBehaviour:
   itemInteractType: 1
   itemSpawnpoint: {fileID: 1216711234026783087}
   shouldSpawnObject: 0
+  collectSound: confirmation_002
 --- !u!54 &-4923282717763664560
 Rigidbody:
   m_ObjectHideFlags: 0

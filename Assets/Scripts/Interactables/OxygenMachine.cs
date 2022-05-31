@@ -17,6 +17,10 @@ public class OxygenMachine : MonoBehaviour, Interactable
     private GameObject spawnedItem;
     [SerializeField] private float removeTime;
     [SerializeField] private bool shouldSpawnObject = true;
+
+    [SerializeField] private string holdSound;
+    [SerializeField] private string completeSound;
+    private AudioSource holdSource;
     private void Start()
     {
         canInteract = true;
@@ -40,6 +44,9 @@ public class OxygenMachine : MonoBehaviour, Interactable
             canInteract = true;
             completionImage.transform.parent.gameObject.SetActive(false);
             OxygenManager.FillOxygen();
+            StopTransition();
+            if (completeSound != "")
+                SoundManager.PlaySFX(completeSound, transform.position);
         }
     }
 
@@ -57,6 +64,8 @@ public class OxygenMachine : MonoBehaviour, Interactable
             spawnedItem = Instantiate(player.GetItem().itemPrefab, itemSpawnpoint);
         player.SetItem(null);
 
+        if (holdSound != "")
+            SoundManager.PlaySFX(holdSound, transform.position, out holdSource);
         
         if (itemInteractType == InteractType.Hold)
             player.ToggleMovement(false);
@@ -87,7 +96,11 @@ public class OxygenMachine : MonoBehaviour, Interactable
         transitioning = false;
         canInteract = true;
         completionImage.transform.parent.gameObject.SetActive(false);
-
+        if (holdSource != null)
+        {
+            holdSource.Stop();
+            SoundManager.Return(holdSource);
+        }
     }
 
     private IEnumerator RemoveCoroutine()

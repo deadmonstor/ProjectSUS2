@@ -426,6 +426,9 @@ MonoBehaviour:
   shouldSpawnObject: 1
   requiresItemToCollect: 1
   itemRequiredToCollect: {fileID: 11400000, guid: 84de091c4766cec4c9268f58d533ec4c, type: 2}
+  completeSound: Microwave_Ping
+  holdSound: Drink_Pour
+  collectSound: confirmation_002
 --- !u!65 &7200753024462265662
 BoxCollider:
   m_ObjectHideFlags: 0

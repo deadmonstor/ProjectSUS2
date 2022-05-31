@@ -18,6 +18,7 @@ public class Customer : MonoBehaviour
     public float speed;
     private float startY;
     public GameObject gfxObject;
+    public Transform indicatorTransform;
 
     private void Awake()
     {
@@ -84,6 +85,7 @@ public class Customer : MonoBehaviour
             _agent.Warp(table.chair.transform.position);
             table.chair.GetComponent<NavMeshObstacle>().enabled = true;
             transform.GetComponent<NavMeshObstacle>().enabled = false;
+            indicatorTransform.gameObject.SetActive(true);
             _agent.enabled = false;
             table.ClearItems();
             RotateToTarget(table.transform);

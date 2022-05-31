@@ -145,6 +145,7 @@ public class CustomerManager : MonoBehaviour
 
     public void OrderReceived(Table table, Customer customer)
     {
+        customer.indicatorTransform.gameObject.SetActive(false);
         StartCoroutine(Eat(table, customer));
     }
 
