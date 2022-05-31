@@ -12,13 +12,18 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private Customer customerPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private ParticleSystem spawnParticle;
+    [SerializeField] private float timeBetweenCustomerSpawns = 5.0f;
     
     [SerializeField] private Table[] tables;
     [SerializeField] private List<Table> availableTables = new List<Table>();
 
-    public bool HasAvailableTables => availableTables.Count > 0;
+    private int _customersRemaining;
+    private float _customerSpawnTime;
     
-    private List<Customer> activeCustomers = new List<Customer>();
+    public bool HasAvailableTables => availableTables.Count > 0;
+    public bool HasMoreCustomers => _customersRemaining > 0;
+
+    private Dictionary<Table, Customer> activeCustomers = new Dictionary<Table, Customer>();
 
 
     private void OnEnable()
@@ -38,9 +43,21 @@ public class CustomerManager : MonoBehaviour
         Events.onCustomerSatDown -= CustomerSatDown;
     }
 
+    private void Update()
+    {
+        _customerSpawnTime += Time.deltaTime;
+
+        if (_customerSpawnTime >= timeBetweenCustomerSpawns)
+        {
+            _customerSpawnTime = 0;
+            SpawnCustomer();
+        }
+        
+    }
+
     private void CustomerSatDown(Customer obj)
     {
-        foreach (Customer c in activeCustomers)
+        foreach (Customer c in activeCustomers.Values)
         {
             c.RecalculatePath();
         }
@@ -49,21 +66,23 @@ public class CustomerManager : MonoBehaviour
     private void LevelLoaded(int index)
     {
         // TODO : ADD CONTEXT OF LEVEL
+        _customersRemaining = totalCustomerAmount;
         SpawnCustomer();
-
     }
 
     private void SpawnCustomer()
     {
-        if (!HasAvailableTables)
+        if (!HasAvailableTables || !HasMoreCustomers)
             return;
         
         spawnParticle.Play();
         Table table = GetRandomTable();
         Customer customer = Instantiate(customerPrefab, Vector3.zero, spawnPoint.rotation);
-        activeCustomers.Add(customer);
+        activeCustomers.Add(table, customer);
+        customer.order = new Order();
         customer.table = table;
         customer.Warp(spawnPoint);
+        _customersRemaining--;
         StartCoroutine(MoveToTarget(customer));
 
     }
@@ -95,39 +114,82 @@ public class CustomerManager : MonoBehaviour
     
     private void ItemPutOnTable(Table table, ItemSO item)
     {
+        if (!activeCustomers.ContainsKey(table)) 
+            return;
         
+        Order order = activeCustomers[table].order;
+        if (item.itemName == "Plate" && order.needsFood && !order.hasFood)
+        {
+            order.hasFood = true;
+        }
+            
+        if (item.itemName == "Drink" && order.needsDrink && !order.hasDrink)
+        {
+            order.hasDrink = true;
+        }
+
+        if (order.hasFood && order.hasDrink)
+        {
+            // Order given, time to eat lol
+            OrderReceived(table, activeCustomers[table]);
+        }
     }
 
-    public void OrderReceived()
+    public void OrderReceived(Table table, Customer customer)
     {
-        
+        StartCoroutine(Eat(table, customer));
     }
 
-    public void Eat()
+    public IEnumerator Eat(Table table, Customer customer)
     {
-        
+        yield return new WaitForSeconds(2f);
+        table.ClearItems();
+        activeCustomers.Remove(table);
+        availableTables.Add(table);
+        customer.Vanish();
+        Events.OnCustomerOrderCompleted(_customersRemaining);
+        yield return new WaitForSeconds(4.0f);
+        StartCoroutine(SpawnNewCustomer());
     }
 
-    public void GetOffFromTable()
+    private IEnumerator SpawnNewCustomer()
     {
-        
-    }
-
-    public void TableFree()
-    {
-        
+        yield return new WaitForSeconds(2f);
+        SpawnCustomer();
     }
 }
 
-[System.Serializable]
 public class Order
 {
     public bool needsFood;
     public bool needsDrink;
 
+    public bool hasFood;
+    public bool hasDrink;
+
+    private int _orderOption = 0;
+
     public Order()
     {
-        needsFood = Random.Range(0, 2) == 0;
-        needsDrink = Random.Range(0, 2) == 0;
+        //_orderOption = Random.Range(0, 3);
+        _orderOption = 0;
+
+        switch (_orderOption)
+        {
+            case 0:
+                needsFood = true;
+                needsDrink = false;
+                hasDrink = true;
+                break;
+            case 1:
+                needsFood = false;
+                needsDrink = true;
+                hasFood = true;
+                break;
+            case 2:
+                needsFood = true;
+                needsDrink = true;
+                break;
+        }
     }
 }

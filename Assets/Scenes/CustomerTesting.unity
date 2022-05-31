@@ -315,6 +315,7 @@ MonoBehaviour:
   customerPrefab: {fileID: 7891490624740068452, guid: 4d5e33064f0efa34fbaf6650e43149c3, type: 3}
   spawnPoint: {fileID: 346970121}
   spawnParticle: {fileID: 1649734370}
+  timeBetweenCustomerSpawns: 5
   tables: []
   availableTables: []
 --- !u!198 &1649734370 stripped

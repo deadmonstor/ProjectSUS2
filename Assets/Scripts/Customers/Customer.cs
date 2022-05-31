@@ -10,6 +10,8 @@ public class Customer : MonoBehaviour
 {
     private NavMeshAgent _agent;
     public Table table;
+    public Order order;
+    public ParticleSystem deSpawnParticle;
 
     private void Awake()
     {
@@ -24,6 +26,19 @@ public class Customer : MonoBehaviour
     public void MoveToTarget()
     {
         _agent.SetDestination(table.chair.transform.position);
+    }
+
+    public void Vanish()
+    {
+        StartCoroutine(CoroutineVanish());
+    }
+
+    private IEnumerator CoroutineVanish()
+    {
+        yield return new WaitForSeconds(1.5f);
+        deSpawnParticle.Play();
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
 
     public void RotateToTarget(Transform targetTransform)
@@ -51,6 +66,7 @@ public class Customer : MonoBehaviour
             table.chair.GetComponent<NavMeshObstacle>().enabled = true;
             transform.GetComponent<NavMeshObstacle>().enabled = false;
             _agent.enabled = false;
+            table.ClearItems();
             RotateToTarget(table.transform);
 
             Events.OnCustomerSatDown(this);

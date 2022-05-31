@@ -37,6 +37,7 @@ public class Table : MonoBehaviour, Interactable
     [SerializeField] private Mesh chairMesh;
     [SerializeField] private GameObject plate;
     [SerializeField] private Transform itemSpawnpoint;
+    
     private GameObject spawnedItem;
 
     public GameObject chair;
@@ -52,6 +53,16 @@ public class Table : MonoBehaviour, Interactable
         
         _canInteract = false;
         Events.OnItemPutOnCustomerTable(this, item);
+    }
+
+    public void ClearItems()
+    {
+        if (spawnedItem != null)
+        {
+            Destroy(spawnedItem.gameObject);
+        }
+
+        _canInteract = true;
     }
 
     private void OnDrawGizmos()
