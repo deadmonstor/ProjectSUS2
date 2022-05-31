@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff5faa7fbd484b28b07bac8e69d1eefa, type: 3}
-  m_Name: Level1
+  m_Name: Level2
   m_EditorClassIdentifier: 
-  LevelBuildID: 2
+  LevelBuildID: 3
   SpawnPoints:
   - {x: -5.5, y: 0, z: -1.6}
   - {x: -0.07, y: 0, z: -1.6}
   - {x: -0.07, y: 0, z: -4.19}
   - {x: -4.01, y: 0, z: -4.19}
-  MaxCustomersSpawned: 10
-  UseOxygen: 0
+  MaxCustomersSpawned: 15
+  UseOxygen: 1
   TimeTillLose: 120
