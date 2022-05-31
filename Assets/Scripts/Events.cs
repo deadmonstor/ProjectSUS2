@@ -18,8 +18,8 @@ public static class Events
     public static void OnItemPutOnCustomerTable(Table table, ItemSO itemSo) { onItemPutOnCustomerTable?.Invoke(table, itemSo); }
 
     // int = level index. Change to scriptable object when it has been added.
-    public static event Action<int> onLevelLoaded;
-    public static void OnLevelLoaded(int index) { onLevelLoaded?.Invoke(index); }
+    public static event Action<LevelSO> onLevelLoaded;
+    public static void OnLevelLoaded(LevelSO level) { onLevelLoaded?.Invoke(level); }
 
     public static event Action<Customer> onCustomerSatDown;
     public static void OnCustomerSatDown(Customer customer) { onCustomerSatDown?.Invoke(customer); }

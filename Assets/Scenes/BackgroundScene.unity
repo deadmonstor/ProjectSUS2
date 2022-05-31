@@ -598,7 +598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current: 0
   GameEndScreen: {fileID: 606962134}
-  levelIDs: 02000000
+  Levels:
+  - {fileID: 11400000, guid: 2de1cf8c693c7c840a2e241429d04cdb, type: 2}
   currentLevelID: 0
   Walls:
   - {fileID: 1738055698}

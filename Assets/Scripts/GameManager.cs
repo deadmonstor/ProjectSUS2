@@ -11,24 +11,26 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnAllPlayers();
+        Events.onLevelLoaded += SpawnAllPlayers;
     }
 
-    public void SpawnAllPlayers()
+    public void SpawnAllPlayers(LevelSO so)
     {
         var devices = Gamepad.all;
 
         int spawnedPlayersIndex = 0;
         for (int i = 0; i < devices.Count; i++)
         {
-            playerInputManager.JoinPlayer(i, -1, "Gamepad", devices[i]);
+            var playerinput = playerInputManager.JoinPlayer(i, -1, "Gamepad", devices[i]);
+            playerinput.gameObject.transform.position = so.SpawnPoints[spawnedPlayersIndex];
             spawnedPlayersIndex++;
         }
 
         if (testing)
         {
             var keyboardMouse = Keyboard.current;
-            playerInputManager.JoinPlayer(spawnedPlayersIndex, -1, "", keyboardMouse);
+            var playerinput =  playerInputManager.JoinPlayer(spawnedPlayersIndex, -1, "", keyboardMouse);
+            playerinput.gameObject.transform.position = so.SpawnPoints[spawnedPlayersIndex];
         }
 
     }

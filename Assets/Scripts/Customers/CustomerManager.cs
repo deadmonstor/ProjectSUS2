@@ -65,10 +65,10 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    private void LevelLoaded(int index)
+    private void LevelLoaded(LevelSO index)
     {
         // TODO : ADD CONTEXT OF LEVEL
-        _customersRemaining = totalCustomerAmount;
+        _customersRemaining = index.MaxCustomersSpawned;
         SpawnCustomer();
     }
 
