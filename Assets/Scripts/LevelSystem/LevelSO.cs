@@ -10,4 +10,5 @@ public class LevelSO : ScriptableObject
     public bool UseOxygen;
 
     public int TimeTillLose;
+    public string Music;
 }
