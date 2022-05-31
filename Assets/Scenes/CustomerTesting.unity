@@ -311,10 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7fed8f00c440345b71bf060bebacd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalCustomerAmount: 2
+  totalCustomerAmount: 10
   customerPrefab: {fileID: 7891490624740068452, guid: 4d5e33064f0efa34fbaf6650e43149c3, type: 3}
   spawnPoint: {fileID: 346970121}
   spawnParticle: {fileID: 1649734370}
+  timeBetweenCustomerSpawns: 5
   tables: []
   availableTables: []
 --- !u!198 &1649734370 stripped
