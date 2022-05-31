@@ -82,7 +82,6 @@ public class CustomerManager : MonoBehaviour
         customer.order = new Order();
         customer.table = table;
         customer.Warp(spawnPoint);
-        _customersRemaining--;
         StartCoroutine(MoveToTarget(customer));
 
     }
@@ -118,12 +117,12 @@ public class CustomerManager : MonoBehaviour
             return;
         
         Order order = activeCustomers[table].order;
-        if (item.itemName == "Plate" && order.needsFood && !order.hasFood)
+        if (item.itemName == "HydratedFood" && order.needsFood && !order.hasFood)
         {
             order.hasFood = true;
         }
             
-        if (item.itemName == "Drink" && order.needsDrink && !order.hasDrink)
+        if (item.itemName == "FilledGlass" && order.needsDrink && !order.hasDrink)
         {
             order.hasDrink = true;
         }
@@ -147,8 +146,10 @@ public class CustomerManager : MonoBehaviour
         activeCustomers.Remove(table);
         availableTables.Add(table);
         customer.Vanish();
+        yield return new WaitForSeconds(2f);
+        _customersRemaining--;
         Events.OnCustomerOrderCompleted(_customersRemaining);
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2f);
         StartCoroutine(SpawnNewCustomer());
     }
 
