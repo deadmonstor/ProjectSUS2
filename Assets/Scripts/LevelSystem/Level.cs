@@ -16,6 +16,8 @@ namespace LevelSystem
         public int current = 0;
         public bool IsTimerOn => current != 0;
 
+        public GameObject GameEndScreen;
+
         public List<int> levelIDs;
         public int currentLevelID = 0;
 
@@ -100,13 +102,19 @@ namespace LevelSystem
 
                 i++;
             }
-
+            
             IsGameRunning = false;
+            
+            yield return new WaitForSecondsRealtime(5f);
+
+            GameEndScreen.SetActive(true);
         }
 
         public void Win()
         {
             IsGameRunning = false;
+            
+            GameEndScreen.SetActive(true);
             
             // TODO: Save the high-score
             
