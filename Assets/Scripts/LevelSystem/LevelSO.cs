@@ -7,4 +7,5 @@ public class LevelSO : ScriptableObject
     public int LevelBuildID;
     public List<Vector3> SpawnPoints;
     public int MaxCustomersSpawned;
+    public bool UseOxygen;
 }
