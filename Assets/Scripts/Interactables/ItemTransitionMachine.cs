@@ -68,7 +68,7 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
                 bobDisplay.SetActive(true);
                 bobSprite.sprite = itemRequiredToCollect.displaySprite;
             }
-            else if (player.GetItem() != requiredItem)
+            else if (player.GetItem() == null || player.GetItem() != requiredItem)
             {
                 bobDisplay.SetActive(true);
                 bobSprite.sprite = requiredItem.displaySprite;
