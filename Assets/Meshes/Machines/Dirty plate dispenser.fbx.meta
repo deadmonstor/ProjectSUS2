@@ -3,7 +3,32 @@ guid: ca3f8383989c0f84bab538ed8b105a70
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Food Packet
+    second: {fileID: 2100000, guid: 2a49f6f93b240f14a9e5561bf4072e8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MEtal
+    second: {fileID: 2100000, guid: fa12b1b605152984a8dbedc680276b82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plate Colour
+    second: {fileID: 2100000, guid: 3453dd3f6c59bde4090d9cd007e4f94b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plsatic
+    second: {fileID: 2100000, guid: 6374653ac350f584c87db9e1b886d5f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel
+    second: {fileID: 2100000, guid: 20e6831da3dde8b47a2ef6ab6428b990, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

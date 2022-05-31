@@ -3,7 +3,37 @@ guid: e01b1cba580f8d247b9e56eaa5bf3c9c
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boc Colour
+    second: {fileID: 2100000, guid: 3d0a1d9fa038d6f4c9663dd662cdb595, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cannister Colour
+    second: {fileID: 2100000, guid: cc83ce4a2b9347646848e95d5c6bb5c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Padding
+    second: {fileID: 2100000, guid: 8e0306b09cf80bb45b596f1b6903e19f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: e54655c7eeed6994d9a1863bd09b7024, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver
+    second: {fileID: 2100000, guid: fa12b1b605152984a8dbedc680276b82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: 3453dd3f6c59bde4090d9cd007e4f94b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
