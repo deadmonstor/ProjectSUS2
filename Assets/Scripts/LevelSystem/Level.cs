@@ -82,7 +82,12 @@ namespace LevelSystem
         private void Update()
         {
             GameTime += Time.deltaTime;
-            TimeText.SetText("Time: " + ((int)GameTimeBeforeLose - (int)GameTime));
+            var time = ((int) GameTimeBeforeLose - (int) GameTime);
+            
+            if (time > 0)
+                TimeText.SetText("Time: " + time);
+            else
+                TimeText.SetText("");
         }
 
         // ReSharper disable Unity.PerformanceAnalysis

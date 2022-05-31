@@ -115,7 +115,7 @@ public class CustomerManager : MonoBehaviour
         if (spawnSound != "")
             SoundManager.PlaySFX(spawnSound, spawnPoint.position);
     }
-
+    
     private IEnumerator MoveToTarget(Customer customer)
     {
         yield return new WaitForSeconds(1.5f);

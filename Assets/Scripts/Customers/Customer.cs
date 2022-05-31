@@ -127,6 +127,7 @@ public class Customer : MonoBehaviour
                 indicatorTransform.gameObject.SetActive(true);
                 table.ClearItems();
                 RotateToTarget(table.transform);
+                table.SpawnGhost(order);
                 hasSatDown = true;
             }else if (!atPlateDispenser)
             {

@@ -42,12 +42,33 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(dir);
     }
 
+    private GameObject lastInteractable;
+    
     private void FixedUpdate()
     {
         if (!allowMovement) return;
 
         _rigidbody.AddForce(new Vector3(_moveVector.x, 0.0f, _moveVector.y) * playerSpeed, ForceMode.Impulse);
         //_rigidbody.MovePosition(transform.position * _moveVector * (playerSpeed * Time.deltaTime));
+
+        if (lastInteractable)
+        {
+            var lastOutlineRenderer = lastInteractable.GetComponent<OutlineScript>();
+                
+            if (lastOutlineRenderer)
+                lastOutlineRenderer.outlineRenderer.enabled = false;
+        }
+        
+        if (interactBox == null) return;
+        if (interactBox.closestGameObject == null) return;
+        
+        var outlineRenderer = interactBox.closestGameObject.GetComponent<OutlineScript>();
+
+        if (outlineRenderer)
+        {
+            outlineRenderer.outlineRenderer.enabled = true;
+            lastInteractable = outlineRenderer.gameObject;
+        }
     }
 
     public void Interact(InputAction.CallbackContext ctx)
