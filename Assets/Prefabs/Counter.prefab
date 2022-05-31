@@ -145,6 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpawnpoint: {fileID: 2719173768085834323}
   shouldSpawnObject: 1
+  placeSound: pluck_002
+  collectSound: confirmation_002
 --- !u!54 &-82972424746816907
 Rigidbody:
   m_ObjectHideFlags: 0

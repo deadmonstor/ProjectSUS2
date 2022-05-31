@@ -17,6 +17,9 @@ public class PlateDispenser : MonoBehaviour, Interactable
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
     [SerializeField] private bool shouldSpawnObject = true;
+
+    [SerializeField] private string collectSound;
+    [SerializeField] private string returnSound;
     private void Start()
     {
         canInteract = true;
@@ -50,6 +53,8 @@ public class PlateDispenser : MonoBehaviour, Interactable
         itemCount--;
         text.text = itemCount.ToString();
         player.SetItem(itemToCollect);
+        if (collectSound != "")
+            SoundManager.PlaySFX(collectSound, transform.position);
         
         if (itemInteractType == InteractType.Hold)
             player.ToggleMovement(false);
@@ -79,5 +84,8 @@ public class PlateDispenser : MonoBehaviour, Interactable
         text.text = itemCount.ToString();
         if (shouldSpawnObject)
             spawnedItem = Instantiate(itemToCollect.itemPrefab, itemSpawnpoint);
+
+        if (returnSound != "")
+            SoundManager.PlaySFX(returnSound, transform.position);
     }
 }

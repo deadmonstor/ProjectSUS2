@@ -11,8 +11,6 @@ public class SoundManager : MonoBehaviour
     
     private static SoundManager instance;
     public static SoundManager Instance => instance;
-    [SerializeField] private StringClipDict clipDictionary;
-    [SerializeField] private StringClipDict musicDict;
     [SerializeField] private AudioSource sourcePrefab;
     private Queue<AudioSource> sourceQueue;
     [SerializeField] private AudioSource musicSource;
@@ -34,6 +32,30 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public static void PlaySFX(string clipToPlay, Vector3 position,out AudioSource source)
+    {
+        SoundManager.Instance.PlaySFXInternal(clipToPlay, position, out source);
+    }
+    
+    private void PlaySFXInternal(string clipToPlay, Vector3 position, out AudioSource source)
+    {
+        source = null;
+        var clip = Resources.Load<AudioClip>($"SFX/{clipToPlay}");
+        if (clip == null)
+        {
+#if UNITY_EDITOR
+            Debug.Log($"{clipToPlay} Does Not Exist In Resources");
+#endif
+            source = null;
+            return;
+        }
+
+        source = sourceQueue.Dequeue();
+        source.clip = clip;
+        source.transform.position = position;
+        source.Play();
+    }
+    
     public static void PlaySFX(string clipToPlay, Vector3 position)
     {
         SoundManager.Instance.PlaySFXInternal(clipToPlay, position);
@@ -41,20 +63,33 @@ public class SoundManager : MonoBehaviour
     
     private void PlaySFXInternal(string clipToPlay, Vector3 position)
     {
-        if (!clipDictionary.ContainsKey(clipToPlay))
+        var clip = Resources.Load<AudioClip>($"SFX/{clipToPlay}");
+        if (clip == null)
         {
 #if UNITY_EDITOR
-            Debug.Log($"{clipToPlay} Does Not Exist In Dictionary");
+            Debug.Log($"{clipToPlay} Does Not Exist In Resources");
 #endif
             return;
         }
 
         var source = sourceQueue.Dequeue();
-        source.clip = clipDictionary[clipToPlay];
+        source.clip = clip;
         source.transform.position = position;
         source.Play();
+        sourceQueue.Enqueue(source);
     }
 
+    public static void Return(AudioSource source)
+    {
+        SoundManager.Instance.ReturnInternal(source);
+    }
+
+    private void ReturnInternal(AudioSource source)
+    {
+        if (source != null)
+            sourceQueue.Enqueue(source);
+    }
+    
     public static void PlayMusic(string musicToPlay)
     {
         SoundManager.Instance.PlayMusicInternal(musicToPlay);
@@ -62,15 +97,15 @@ public class SoundManager : MonoBehaviour
 
     private void PlayMusicInternal(string musicToPlay)
     {
-        if (!musicDict.ContainsKey(musicToPlay))
+        var clip = Resources.Load<AudioClip>($"Music/{musicToPlay}");
+        if (clip == null)
         {
 #if UNITY_EDITOR
-            Debug.Log($"{musicToPlay} Does Not Exist In Dictionary");
+            Debug.Log($"{musicToPlay} Does Not Exist In Resources");
 #endif
             return;
         }
-
-        musicSource.clip = musicDict[musicToPlay];
+        musicSource.clip = clip;
         musicSource.Play();
     }
 

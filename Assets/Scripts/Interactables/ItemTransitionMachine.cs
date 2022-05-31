@@ -20,7 +20,11 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     [SerializeField] private bool shouldSpawnObject = true;
     [SerializeField] private bool requiresItemToCollect = false;
     [SerializeField] private ItemSO itemRequiredToCollect;
-    
+    [SerializeField] private string completeSound;
+    [SerializeField] private string holdSound;
+    [SerializeField] private string collectSound;
+    [SerializeField] private string placeSound = "pluck_002";
+    private AudioSource holdSource;
     private void Start()
     {
         canInteract = true;
@@ -44,6 +48,8 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
             transitioning = false;
             canInteract = true;
             SetMesh(transitionItem);
+            if (completeSound != "")
+                SoundManager.PlaySFX(completeSound, transform.position);
         }
     }
 
@@ -86,6 +92,11 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
         transitionItem = null;
         canInteract = true;
         completionImage.transform.parent.gameObject.SetActive(false);
+        if (holdSource != null)
+        {
+            holdSource.Stop();
+            SoundManager.Return(holdSource);
+        }
     }
     
     private bool TryCollectItem(PlayerController player)
@@ -95,7 +106,8 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
             if (player.GetItem() != requiresItemToCollect) return false;
             player.SetItem(null);
         }
-            
+        if (collectSound != "")
+            SoundManager.PlaySFX(collectSound, transform.position);
         
         completionImage.transform.parent.gameObject.SetActive(false);
         player.SetItem(transitionItem);
@@ -125,6 +137,10 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
                 completionImage.fillAmount = 0;
                 if (itemInteractType == InteractType.Hold)
                     player.ToggleMovement(false);
+                if (placeSound != "")
+                    SoundManager.PlaySFX(placeSound, transform.position);
+                if (holdSound != "" && itemInteractType == InteractType.Hold)
+                    SoundManager.PlaySFX(holdSound, transform.position, out holdSource);
                 
                 player.SetItem(null);
                 return true;

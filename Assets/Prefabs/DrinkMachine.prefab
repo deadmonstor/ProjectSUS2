@@ -310,6 +310,12 @@ MonoBehaviour:
   machineType: 1
   completionImage: {fileID: 1644135097231570610}
   itemSpawnpoint: {fileID: 6902946034615767335}
+  shouldSpawnObject: 1
+  requiresItemToCollect: 0
+  itemRequiredToCollect: {fileID: 0}
+  completeSound: pluck_002
+  holdSound: Drink_Pour
+  collectSound: confirmation_002
 --- !u!65 &8194377279253719192
 BoxCollider:
   m_ObjectHideFlags: 0

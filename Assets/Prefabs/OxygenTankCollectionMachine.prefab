@@ -257,6 +257,9 @@ MonoBehaviour:
   itemCount: 3
   text: {fileID: 2054269674}
   itemSpawnpoint: {fileID: 643799248877858017}
+  shouldSpawnObject: 1
+  collectSound: confirmation_002
+  returnSound: glass_006
 --- !u!54 &-1758434837707848739
 Rigidbody:
   m_ObjectHideFlags: 0

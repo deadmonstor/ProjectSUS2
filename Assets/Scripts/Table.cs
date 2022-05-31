@@ -37,7 +37,7 @@ public class Table : MonoBehaviour, Interactable
     [SerializeField] private Mesh chairMesh;
     [SerializeField] private Transform itemSpawnpoint;
     [SerializeField] private Transform drinkSpawnpoint;
-    
+    [SerializeField] private string placeSound = "click_002";
     private GameObject spawnedItem;
     private GameObject spawnedDrink;
 
@@ -61,6 +61,9 @@ public class Table : MonoBehaviour, Interactable
             Events.OnItemPutOnCustomerTable(this, item);
         }
 
+        if (placeSound != "")
+            SoundManager.PlaySFX(placeSound, transform.position);
+        
         if (spawnedDrink != null && spawnedItem != null)
         {
             _canInteract = false;

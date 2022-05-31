@@ -250,6 +250,9 @@ MonoBehaviour:
   itemSpawnpoint: {fileID: 1269897845395831604}
   itemInteractType: 1
   removeTime: 5
+  shouldSpawnObject: 1
+  holdSound: Oxygen_Release
+  completeSound: click_002
 --- !u!65 &640796943
 BoxCollider:
   m_ObjectHideFlags: 0
