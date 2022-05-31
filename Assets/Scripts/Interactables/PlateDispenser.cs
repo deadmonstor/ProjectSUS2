@@ -20,6 +20,9 @@ public class PlateDispenser : MonoBehaviour, Interactable
 
     [SerializeField] private string collectSound;
     [SerializeField] private string returnSound;
+
+    public Transform movePoint;
+    
     private void Start()
     {
         canInteract = true;
