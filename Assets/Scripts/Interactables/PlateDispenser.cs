@@ -39,10 +39,21 @@ public class PlateDispenser : MonoBehaviour, Interactable
     }
 
     public bool canInteract { get; set; }
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
     public bool InteractPressed(PlayerController player)
     {
         if (itemCount <= 0) return false;
-        if (player.GetItem() == itemToCollect) return false;
+        if (player.GetItem() != null) return false;
 
         transitioning = true;
         canInteract = false;

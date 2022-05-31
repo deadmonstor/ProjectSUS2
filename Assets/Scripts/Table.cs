@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Table : MonoBehaviour, Interactable
@@ -97,6 +98,17 @@ public class Table : MonoBehaviour, Interactable
 
     private bool _canInteract = true;
     public bool canInteract => _canInteract;
+
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+        }
+        else
+        {
+            
+        }
+    }
 
     public bool InteractPressed(PlayerController player)
     {

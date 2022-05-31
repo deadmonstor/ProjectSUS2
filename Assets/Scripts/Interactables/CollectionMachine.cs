@@ -45,9 +45,22 @@ public class CollectionMachine : MonoBehaviour, Interactable
     }
 
     public bool canInteract { get; set; }
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
     public bool InteractPressed(PlayerController player)
     {
         if (!canInteract) return false;
+        if (player.GetItem() != null) return false;
+
         transitioning = true;
         canInteract = false;
         timer = 0;

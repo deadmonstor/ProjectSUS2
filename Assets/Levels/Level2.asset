@@ -21,3 +21,4 @@ MonoBehaviour:
   MaxCustomersSpawned: 15
   UseOxygen: 1
   TimeTillLose: 120
+  Music: MusicLoop2

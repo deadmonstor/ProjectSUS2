@@ -12,6 +12,17 @@ public class Counter : MonoBehaviour, Interactable
     public bool canInteract { get; set; }
     [SerializeField] private string placeSound;
     [SerializeField] private string collectSound;
+    public void FaceCheck(PlayerController player, bool enter)
+    {
+        if (enter)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
     public bool InteractPressed(PlayerController player)
     {
         if (hasItem)

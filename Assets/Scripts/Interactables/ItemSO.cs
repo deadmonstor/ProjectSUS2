@@ -8,4 +8,5 @@ public class ItemSO : ScriptableObject
     public List<ItemTransition> itemTransitions;
 
     public GameObject itemPrefab;
+    public Sprite displaySprite;
 }
