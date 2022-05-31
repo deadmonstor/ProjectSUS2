@@ -10,26 +10,16 @@ public class LevelEditorScript : EditorWindow
         ((LevelEditorScript)EditorWindow.GetWindow(typeof(LevelEditorScript))).Show();
     }
 
-    private Dictionary<int, string> LevelData = new Dictionary<int, string>
+    private Dictionary<int, ItemSO> LevelData = new Dictionary<int, ItemSO>
     {
-        {0, "test"},
     };
 
     private void OnGUI()
     {
-
-        bool myBool = false;
-        
         GUILayout.Label("Level Settings", EditorStyles.boldLabel);
         foreach (var currentLevelData in LevelData)
         {
-            EditorGUILayout.BeginToggleGroup("Level 0", true);
-            EditorGUILayout.Toggle ("Toggle", myBool);
-            EditorGUILayout.Toggle ("Toggle", myBool);
-            EditorGUILayout.Toggle ("Toggle", myBool);
-            EditorGUILayout.Toggle ("Toggle", myBool);
-            EditorGUILayout.Toggle ("Toggle", myBool);
-            EditorGUILayout.EndToggleGroup ();
+            
         }
     }
 }

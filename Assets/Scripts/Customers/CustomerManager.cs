@@ -18,10 +18,12 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private List<Table> availableTables = new List<Table>();
 
     private int _customersRemaining;
+    private int _totalSpawnedCustomers;
     private float _customerSpawnTime;
     
     public bool HasAvailableTables => availableTables.Count > 0;
     public bool HasMoreCustomers => _customersRemaining > 0;
+    public bool HasCustomerLeftToSpawn => _totalSpawnedCustomers < totalCustomerAmount;
 
     private Dictionary<Table, Customer> activeCustomers = new Dictionary<Table, Customer>();
 
@@ -63,16 +65,22 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    private void LevelLoaded(int index)
+    private void LevelLoaded(LevelSO index)
     {
         // TODO : ADD CONTEXT OF LEVEL
-        _customersRemaining = totalCustomerAmount;
+        _customersRemaining = index.MaxCustomersSpawned;
         SpawnCustomer();
     }
 
     private void SpawnCustomer()
     {
-        if (!HasAvailableTables || !HasMoreCustomers)
+        if (!HasAvailableTables)
+            return;
+
+        if (!HasMoreCustomers)
+            return;
+
+        if (!HasCustomerLeftToSpawn)
             return;
         
         spawnParticle.Play();
@@ -83,6 +91,7 @@ public class CustomerManager : MonoBehaviour
         customer.table = table;
         customer.Warp(spawnPoint);
         StartCoroutine(MoveToTarget(customer));
+        _totalSpawnedCustomers++;
 
     }
 

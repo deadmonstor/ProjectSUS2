@@ -6,7 +6,8 @@ public enum MachineType
 {
     FoodHydrator,
     WaterDispenser,
-    OxygenDispenser
+    OxygenDispenser,
+    Sink
 }
 
 public enum InteractType

@@ -11,13 +11,15 @@ public static class Events
     public static void OnOutOfOxygen(){onOutOfOxygen?.Invoke();}
     public static event Action onAddEmptyTank;
     public static void OnAddEmptyTank(){onAddEmptyTank?.Invoke();}
+    public static event Action onAddDirtyPlate;
+    public static void OnAddDirtyPlate(){onAddDirtyPlate?.Invoke();}
 
     public static event Action<Table, ItemSO> onItemPutOnCustomerTable;
     public static void OnItemPutOnCustomerTable(Table table, ItemSO itemSo) { onItemPutOnCustomerTable?.Invoke(table, itemSo); }
 
     // int = level index. Change to scriptable object when it has been added.
-    public static event Action<int> onLevelLoaded;
-    public static void OnLevelLoaded(int index) { onLevelLoaded?.Invoke(index); }
+    public static event Action<LevelSO> onLevelLoaded;
+    public static void OnLevelLoaded(LevelSO level) { onLevelLoaded?.Invoke(level); }
 
     public static event Action<Customer> onCustomerSatDown;
     public static void OnCustomerSatDown(Customer customer) { onCustomerSatDown?.Invoke(customer); }

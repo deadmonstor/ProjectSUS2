@@ -19,7 +19,7 @@ namespace LevelSystem
 
         public GameObject GameEndScreen;
 
-        public List<int> levelIDs;
+        public List<LevelSO> Levels;
         public int currentLevelID = 0;
 
         public List<GameObject> Walls = new List<GameObject>();
@@ -43,22 +43,25 @@ namespace LevelSystem
                     Win();
                 }
             };
+
+            Events.onOutOfOxygen += () =>
+            {
+                StartCoroutine(Lose());
+            };
         }
         
         public IEnumerator StartGame()
         {
-           
-
             if (SceneManager.GetAllScenes().Count() == 1)
             {
-                var asyncLoad = SceneManager.LoadSceneAsync(levelIDs[currentLevelID], LoadSceneMode.Additive);
+                var asyncLoad = SceneManager.LoadSceneAsync(Levels[currentLevelID].LevelBuildID, LoadSceneMode.Additive);
 
                 while (!asyncLoad.isDone)
                 {
                     yield return null;
                 }
                 
-                _currentLoadedScene = SceneManager.GetSceneByBuildIndex(levelIDs[currentLevelID]);
+                _currentLoadedScene = SceneManager.GetSceneByBuildIndex(Levels[currentLevelID].LevelBuildID);
             }
             
             SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
@@ -66,9 +69,11 @@ namespace LevelSystem
 
             GameTime = 0;
 
-            Events.OnLevelLoaded(levelIDs[currentLevelID]);
+            yield return new WaitForSeconds(1f);
             
-            yield return new WaitForSecondsRealtime(GameTimeBeforeLose);
+            Events.OnLevelLoaded(Levels[currentLevelID]);
+            
+            yield return new WaitForSeconds(GameTimeBeforeLose);
             StartCoroutine(Lose());
         }
 

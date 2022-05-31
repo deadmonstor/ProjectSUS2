@@ -598,7 +598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current: 0
   GameEndScreen: {fileID: 606962134}
-  levelIDs: 02000000
+  Levels:
+  - {fileID: 11400000, guid: 2de1cf8c693c7c840a2e241429d04cdb, type: 2}
   currentLevelID: 0
   Walls:
   - {fileID: 1738055698}
@@ -2353,7 +2354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279a50e65e28b5c4cb779e7cb365e8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testing: 0
+  testing: 1
   playerInputManager: {fileID: 1644714587}
 --- !u!4 &1585634687
 Transform:
