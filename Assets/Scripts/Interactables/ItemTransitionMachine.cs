@@ -63,7 +63,9 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     public bool canInteract { get; set; }
     public void FaceCheck(PlayerController player, bool enter)
     {
-        Debug.Log(enter);
+        Debug.Log(itemInteractType);
+        if (player.GetItem() != null)
+            itemInteractType = player.GetItem().itemTransitions[0].interactType;
         if (enter)
         {
             if (!transitioning && hasItem && (player.GetItem() != itemRequiredToCollect || player.GetItem() == null))
@@ -80,9 +82,15 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
             {
                 bobDisplay.SetActive(false);
                 if (itemInteractType == InteractType.Hold)
+                {
                     holdInteractDisplay.SetActive(true);
+                    pressInteractDisplay.SetActive(false);
+                }
                 else if (itemInteractType == InteractType.Press)
+                {
+                    holdInteractDisplay.SetActive(false);
                     pressInteractDisplay.SetActive(true);
+                }
             }
         }
         else

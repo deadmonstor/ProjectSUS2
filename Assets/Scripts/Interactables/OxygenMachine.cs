@@ -69,9 +69,15 @@ public class OxygenMachine : MonoBehaviour, Interactable
             {
                 bobDisplay.SetActive(false);
                 if (itemInteractType == InteractType.Hold)
+                {
                     holdInteractDisplay.SetActive(true);
+                    pressInteractDisplay.SetActive(false);
+                }
                 else if (itemInteractType == InteractType.Press)
+                {
+                    holdInteractDisplay.SetActive(false);
                     pressInteractDisplay.SetActive(true);
+                }
             }
         }
         else

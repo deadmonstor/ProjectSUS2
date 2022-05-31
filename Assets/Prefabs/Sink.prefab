@@ -242,7 +242,7 @@ Transform:
   - {fileID: 1644135096309096373}
   - {fileID: 6902946034615767335}
   - {fileID: 5963163327257324612}
-  - {fileID: 7693758392315276383}
+  - {fileID: 6813099127071307938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -321,8 +321,8 @@ MonoBehaviour:
   collectSound: confirmation_002
   placeSound: pluck_002
   bobDisplay: {fileID: 8626474416286502618}
-  holdInteractDisplay: {fileID: 5536713584690915449}
-  pressInteractDisplay: {fileID: 8305085098670126947}
+  holdInteractDisplay: {fileID: 8691699178678451332}
+  pressInteractDisplay: {fileID: 5118573061752578974}
   bobSprite: {fileID: 1335350506672902993}
 --- !u!65 &8194377279253719192
 BoxCollider:
@@ -628,17 +628,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4912350305350818047
+--- !u!1001 &8098995378341121026
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1644135096764475042}
     m_Modifications:
-    - target: {fileID: 646960582442053766, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 837556661485426238, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_Name
       value: InteractUI
@@ -673,11 +669,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 487
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 348
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -689,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.22
+      value: 3.212
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -713,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.0010070801
       objectReference: {fileID: 0}
     - target: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -733,18 +729,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
---- !u!224 &7693758392315276383 stripped
+--- !u!224 &6813099127071307938 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3380396744890545312, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
-  m_PrefabInstance: {fileID: 4912350305350818047}
+  m_PrefabInstance: {fileID: 8098995378341121026}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5536713584690915449 stripped
+--- !u!1 &8691699178678451332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 646960582442053766, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
-  m_PrefabInstance: {fileID: 4912350305350818047}
+  m_PrefabInstance: {fileID: 8098995378341121026}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8305085098670126947 stripped
+--- !u!1 &5118573061752578974 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3994053462347804572, guid: 04248bbe33fe7744a860f134d0014b3c, type: 3}
-  m_PrefabInstance: {fileID: 4912350305350818047}
+  m_PrefabInstance: {fileID: 8098995378341121026}
   m_PrefabAsset: {fileID: 0}
