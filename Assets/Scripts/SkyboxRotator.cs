@@ -8,13 +8,18 @@ public class SkyboxRotator : MonoBehaviour
 {
     public float rotation;
     private static readonly int Rotation = Shader.PropertyToID("_Rotation");
+    [SerializeField] private Material skyboxMat;
+
+    private void Start()
+    {
+        RenderSettings.skybox = skyboxMat;
+    }
 
     private void Update()
     {
         rotation += Time.deltaTime;
         if (rotation >= 360) rotation = 0;
 
-        RenderSettings.skybox.SetFloat(Rotation, rotation);
-
+        skyboxMat.SetFloat(Rotation, rotation);
     }
 }
