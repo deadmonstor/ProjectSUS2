@@ -3,7 +3,27 @@ guid: f42d00f26560f12458b3dced7b295a08
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bench
+    second: {fileID: 2100000, guid: b5aee4b467bcddc44a534082a268432c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Colour
+    second: {fileID: 2100000, guid: df6f272d07af2be448f9dd627b9fe349, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: 8db9288ee76523d4d87bb63c1c318481, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shiny
+    second: {fileID: 2100000, guid: f94c2d14057cce54e85164a17e4cfea1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
