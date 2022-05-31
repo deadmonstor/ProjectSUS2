@@ -44,8 +44,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Events.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/PlateDispenser.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Customers/CustomerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Table.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Customers/Customer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Table.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -88,10 +89,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19908">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19908" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
