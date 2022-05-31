@@ -17,7 +17,7 @@ public class OxygenUI : MonoBehaviour
     
     private void UpdateOxygen()
     {
-        var oxygenAmount = OxygenManager.Oxygen / OxygenManager.MaxOxygen;
+        var oxygenAmount = OxygenManager.Oxygen;
         oxygenFillImage.fillAmount = oxygenAmount;
         oxygenFillImage.color = oxygenFillColourGradient.Evaluate(oxygenAmount);
     }

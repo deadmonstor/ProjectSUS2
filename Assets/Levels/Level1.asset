@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42da4ee2a9b4ea34c84803112b98a711, type: 3}
-  m_Name: HydratedFood
+  m_Script: {fileID: 11500000, guid: ff5faa7fbd484b28b07bac8e69d1eefa, type: 3}
+  m_Name: Level1
   m_EditorClassIdentifier: 
-  itemName: HydratedFood
-  itemTransitions: []
-  itemPrefab: {fileID: 5375758773533737027, guid: 1ab5e549640a6b8428a9ceaecdf61e75, type: 3}
+  LevelBuildID: 2
+  SpawnPoints:
+  - {x: -5.5, y: 0, z: -1.6}
+  - {x: -0.07, y: 0, z: -1.6}
+  - {x: -0.07, y: 0, z: -4.19}
+  - {x: -4.01, y: 0, z: -4.19}
+  MaxCustomersSpawned: 10
