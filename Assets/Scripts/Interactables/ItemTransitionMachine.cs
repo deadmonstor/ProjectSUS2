@@ -57,17 +57,18 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     public bool InteractReleased(PlayerController player)
     {        
         player.ToggleMovement(true);
-        completionImage.transform.parent.gameObject.SetActive(false);
 
         if (transitioning && itemInteractType == InteractType.Hold)
         {
+            completionImage.transform.parent.gameObject.SetActive(false);
             StopTransition();
             player.SetItem(startItem);
             return true;
         }
 
-        if (hasItem)
+        if (hasItem && !transitioning)
         {
+            completionImage.transform.parent.gameObject.SetActive(false);
             TryCollectItem(player);
             return true;
         }
