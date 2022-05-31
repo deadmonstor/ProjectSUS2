@@ -150,7 +150,7 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     {
         if (requiresItemToCollect)
         {
-            if (player.GetItem() != requiresItemToCollect) return false;
+            if (player.GetItem() != itemRequiredToCollect) return false;
             player.SetItem(null);
         }
         if (collectSound != "")
