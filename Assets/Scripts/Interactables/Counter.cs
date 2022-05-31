@@ -27,6 +27,8 @@ public class Counter : MonoBehaviour, Interactable
     
     private bool TryCollectItem(PlayerController player)
     {
+        if (player.GetItem() != null) return false;
+
         player.SetItem(currentItem);
         currentItem = null;
         hasItem = false;
