@@ -90,8 +90,12 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     
     private bool TryCollectItem(PlayerController player)
     {
-        if (requiresItemToCollect && player.GetItem() != itemRequiredToCollect)
-            return false;
+        if (requiresItemToCollect)
+        {
+            if (player.GetItem() != requiresItemToCollect) return false;
+            player.SetItem(null);
+        }
+            
         
         completionImage.transform.parent.gameObject.SetActive(false);
         player.SetItem(transitionItem);
