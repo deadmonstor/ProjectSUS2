@@ -11,6 +11,8 @@ public static class Events
     public static void OnOutOfOxygen(){onOutOfOxygen?.Invoke();}
     public static event Action onAddEmptyTank;
     public static void OnAddEmptyTank(){onAddEmptyTank?.Invoke();}
+    public static event Action onAddDirtyPlate;
+    public static void OnAddDirtyPlate(){onAddDirtyPlate?.Invoke();}
 
     public static event Action<Table, ItemSO> onItemPutOnCustomerTable;
     public static void OnItemPutOnCustomerTable(Table table, ItemSO itemSo) { onItemPutOnCustomerTable?.Invoke(table, itemSo); }
