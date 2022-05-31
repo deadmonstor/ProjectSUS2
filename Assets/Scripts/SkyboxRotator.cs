@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-[ExecuteAlways]
 public class SkyboxRotator : MonoBehaviour
 {
     public float rotation;
@@ -17,10 +16,5 @@ public class SkyboxRotator : MonoBehaviour
 
         RenderSettings.skybox.SetFloat(Rotation, rotation);
 
-    }
-
-    private void OnValidate()
-    {
-        RenderSettings.skybox.SetFloat(Rotation, rotation);
     }
 }
