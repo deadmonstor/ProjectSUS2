@@ -42,6 +42,12 @@ public class Table : MonoBehaviour, Interactable
     private GameObject spawnedItem;
     private GameObject spawnedDrink;
 
+    private GameObject ghostFood;
+    private GameObject ghostDrink;
+    
+    public GameObject drinkGhostPrefab;
+    public GameObject foodGhostPrefab;
+
     public GameObject chair;
 
     private void Start()
@@ -49,17 +55,42 @@ public class Table : MonoBehaviour, Interactable
         chair = GameObject.Instantiate(chairPrefab, transform.position + GetOffset(), chairPrefab.transform.rotation);
     }
 
+    public void SpawnGhost(Order order)
+    {
+        if (order.needsDrink)
+        {
+            ghostDrink = Instantiate(drinkGhostPrefab, drinkSpawnpoint);
+        }
+
+        if (order.needsFood)
+        {
+            ghostFood = Instantiate(foodGhostPrefab, itemSpawnpoint);
+        }
+    }
+    
     public void PutOnTable(ItemSO item)
     {
         if (item.itemName == "FilledGlass" && spawnedDrink == null)
         {
+            if (ghostDrink != null)
+            {
+                Destroy(ghostDrink.gameObject);
+            }
             spawnedDrink = Instantiate(item.itemPrefab, drinkSpawnpoint);
             Events.OnItemPutOnCustomerTable(this, item);
         }
-        else if (spawnedItem == null)
+        else if (spawnedItem == null && item.itemName == "HydratedFood")
         {
+            if (ghostFood != null)
+            {
+                Destroy(ghostFood.gameObject);
+            }
             spawnedItem = Instantiate(item.itemPrefab, itemSpawnpoint);
             Events.OnItemPutOnCustomerTable(this, item);
+        }
+        else
+        {
+            return;
         }
 
         if (placeSound != "")
