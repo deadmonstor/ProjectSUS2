@@ -18,6 +18,9 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     [SerializeField] private Transform itemSpawnpoint;
     private GameObject spawnedItem;
     [SerializeField] private bool shouldSpawnObject = true;
+    [SerializeField] private bool requiresItemToCollect = false;
+    [SerializeField] private ItemSO itemRequiredToCollect;
+    
     private void Start()
     {
         canInteract = true;
@@ -68,7 +71,6 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
 
         if (hasItem && !transitioning)
         {
-            completionImage.transform.parent.gameObject.SetActive(false);
             TryCollectItem(player);
             return true;
         }
@@ -88,9 +90,14 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
     
     private bool TryCollectItem(PlayerController player)
     {
+        if (requiresItemToCollect && player.GetItem() != itemRequiredToCollect)
+            return false;
+        
+        completionImage.transform.parent.gameObject.SetActive(false);
         player.SetItem(transitionItem);
         hasItem = false;
         RemoveMesh();
+        StopTransition();
         return true;
     }
     private bool TrySetItem(PlayerController player)
