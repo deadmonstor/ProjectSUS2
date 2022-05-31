@@ -71,7 +71,6 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
 
         if (hasItem && !transitioning)
         {
-            completionImage.transform.parent.gameObject.SetActive(false);
             TryCollectItem(player);
             return true;
         }
@@ -94,9 +93,11 @@ public class ItemTransitionMachine : MonoBehaviour, Interactable
         if (requiresItemToCollect && player.GetItem() != itemRequiredToCollect)
             return false;
         
+        completionImage.transform.parent.gameObject.SetActive(false);
         player.SetItem(transitionItem);
         hasItem = false;
         RemoveMesh();
+        StopTransition();
         return true;
     }
     private bool TrySetItem(PlayerController player)
